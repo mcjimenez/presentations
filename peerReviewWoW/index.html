@@ -72,6 +72,79 @@
             <p>This is just something that works for us and we thought it would be cool to share.</p>
           </section>
         </section>
+<!--
+*** Beneficios ****
+
+A different perspective.
+ “Another set of eyes” adds objectivity.
+
+Vision global :
+Todos los miembros del equipo conocen, al menos por encima, como está hecho todo el proyecto
+
+Evita fallos y regresiones:
+Porque otro miembro del equipo revisa el código subido. Puede tener en cta algo que quizás no viste
+
+Mejora el código
+Siempre hay una forma de mejorar
+
+Aumentan los conocimientos de los miembros del equipo
+Alguien te puede enseñar algo nuevo
+
+*** Inconvenientes ***
+
+- Una primera impresion puede parecer que tienes más trabajo, el tuyo y la revisión del ocmpañero
+
+- Al tener que ser revisado puede parecer que se tarda más en aterrizar algo
+
+
+****** Antes de empezar ********
+* Nos basamos en sprints (normalm 2 semanas)
+- Producto nos dice que funcionalidades/requisitos quiere (user stories)
+- Aportamos los comentarios que cosideremos oportunos a esas funcionalidades
+- Acordadas las funcionalidades nos las prioriza
+- Cada user story se determina las tareas necesarias para completarla
+- El equipo estima el tiempo necesario para cada funcionalidad
+- una user story debe entrar en un sprint, sino hay q partirlo
+- Vemos cuantas funcionalidades podemos realizar en el sprint
+- Durante el sprint los requisitos no deberían cambiar
+
+
+
+* Cada miembro tiene su copia del proyecto (fork)
+* tiene añadido como remoto el repositorio central
+git remote add <nombreRepoCentral> url
+
+* Cada vez q empieza una tarea parte de master
+git checkout master
+- Actualiza repo
+git remote update
+- Crea rama para la nueva tarea
+git checkout -b TIC-XXX donde TIC es el id del proyecto y XXX el numero de tarea
+- Realiza el trabajo y lo sube a su copia
+git add <fichNecesarios>
+git commit -m "[TIC-XXX] descripcion de lo hecho>
+git push origin TIC-XXX
+
+- Pide revision
+hacer PR en github con r? @<idPeerReview>
+
+**** Durante la revision *****
+* El revisor hace una primera pasada viendo que cumple las reglas de estilo
+ y que no hay fallos
+* Realiza los test necesarios, comprueba que funciona y no tiene bugs
+* solicita los cambios que considere oportuno, pregunta lo que no entienda (si es el caso)
+* el revisado argumenta si considera oportuno xq ha implementado así la solucion
+* se llega a un acuerdo de que cambiar
+* realiza los cambios solicitados
+* si los cambios fueron básicos, poco o muy claros informa de que está disponible
+* si los cambios fueron significativos vuelve a solicitar review
+* cuando se tiene el r+ el revisor mergea el pr
+
+***** Varia tareas a la vez ****
+Mientras una tarea está en review puedes empezar otra funcionalidad
+se trata de coger una que no afecte a la funcionalidad en review
+si no se puede o depende puedes hacer un cherry-pick
+-->
         <section>
           <section>
 					  <h2 class="fragment highlight-red">Starting from the beginning...</h2>
