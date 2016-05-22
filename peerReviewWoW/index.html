@@ -201,69 +201,88 @@
           </section>
           <section>
             <h2>Or so the theory goes.</h2>
-            <h3 class="fragment roll-in">The definition of <i>always</i> and <i>never</i> is subject to
-              change though:</h3>
+            <h3 class="fragment roll-in">The definition of <i>always</i> and <i>never</i> is subject
+              to change though:</h3>
             <img class="fragment roll-in" src="imgs/ruleexception.png">
           </section>
         </section>
+        <section>
+          <section>
+            <h2>Review process</h2>
+            <ol>
+              <li class="fragment roll-in">
+                On the PR, tell who you would like to review the code with something like:
+                <pre>
+r? @userid
+                </pre>
+              </li>
+              <li class="fragment roll-in">
+                Reviewer tests the PR (hopefully :P) and does a first pass of style.
+              </li>
+              <li class="fragment roll-in">
+                Then he does a deeper pass trying to understand how and why is the code organized
+                that way. He notes his <a href="https://github.com/opentok/OpenTokRTC-V2-Android/pull/56#discussion-diff-63472988" target="_blank">questions</a>, or
+                <a href="https://github.com/opentok/OpenTokRTC-V2-Android/pull/60#discussion-diff-63719012"
+                target="_blank">just his comments!</a>
+              </li>
+              <li class="fragment roll-in">
+                He <a href="https://github.com/opentok/OpenTokRTC-V2-Android/pull/55#discussion-diff-63599367"
+                target="_blank">requests</a> any changes
+                he <a href="https://github.com/opentok/OpenTokRTC-V2-Android/pull/25#discussion-diff-62014452" 
+                target="_blank">deems necessary.</a>
+              </li>
+              </ol>
+          </section>
+          <section>
+            <ol start=5>
+              <li class="fragment roll-in">
+                The author answers the questions and implements any changes he wants to accept.
+              </li>
+              <li class="fragment roll-in">
+                If he doesn't want to accept a given change, he can
+                <a href="https://github.com/opentok/OpenTokRTC-V2-Android/pull/33#discussion-diff-62197868"
+                target="_blank">give his reason and just don't do it.</a>
+              </li>
+              <li class="fragment roll-in">
+                Or argue on the review...
+              </li>
+              <li class="fragment roll-in">
+                Or argue it offline...
+              </li>
+              <li class="fragment roll-in">
+                Or even take it outside! (JK, JK :P)
+              </li>
+            </ol>
+          </section>
+        </section>
+        <section>
+          <h2>Some tips...</h2>
+          <ul>
+            <li class="fragment roll-in">
+              While a review is in process you can (should in fact) keep getting new tasks!
+            </li>
+            <li class="fragment roll-in">
+              So you can have several PRs in flight. And that means that sooner or later you're
+              going to have to rebase.
+            </li>
+            <li class="fragment roll-in">
+              <b>Use the tools!</b> try to use Git own's review
+              tools, and do as much of the review in place. That adds traceability... and sometimes
+              makes for a read fun :P.
+            </li>
+            <li class="fragment roll-in">
+              As a reviewer, don't be afraid of ask for the reason of something, or ask for
+              changes. Maybe it's something you don't know and you'll learn something, maybe it's an
+              error!
+            </li>
+            <li class="fragment roll-in">
+              As a reviewee, well, it sucks when your nicely done PR is gutted! But maybe you'll
+              also learn something in the exchange!
+            </li>
+          </ul>
+          <h4 class="fragment roll-in">In general, try to keep in mind that improving the code &#gt; winning an argument ;)</h4>
+        </section>
 
-<!--
-
- - Que: 
-    - Sprints, tareas... (de lo tuyo)
-    - Revisiones de codigo obligatorias, anotación con el número de issue para trazabilidad
-    - Flexibilidad
-
-
-
-****** Antes de empezar ********
-* Nos basamos en sprints (normalm 2 semanas)
-- Producto nos dice que funcionalidades/requisitos quiere (user stories)
-- Aportamos los comentarios que cosideremos oportunos a esas funcionalidades
-- Acordadas las funcionalidades nos las prioriza
-- Cada user story se determina las tareas necesarias para completarla
-- El equipo estima el tiempo necesario para cada funcionalidad
-- una user story debe entrar en un sprint, sino hay q partirlo
-- Vemos cuantas funcionalidades podemos realizar en el sprint
-- Durante el sprint los requisitos no deberían cambiar
-
-
-
-* Cada miembro tiene su copia del proyecto (fork)
-* tiene añadido como remoto el repositorio central
-git remote add <nombreRepoCentral> url
-
-* Cada vez q empieza una tarea parte de master
-git checkout master
-- Actualiza repo
-git remote update
-- Crea rama para la nueva tarea
-git checkout -b TIC-XXX donde TIC es el id del proyecto y XXX el numero de tarea
-- Realiza el trabajo y lo sube a su copia
-git add <fichNecesarios>
-git commit -m "[TIC-XXX] descripcion de lo hecho>
-git push origin TIC-XXX
-
-- Pide revision
-hacer PR en github con r? @<idPeerReview>
-
-**** Durante la revision *****
-* El revisor hace una primera pasada viendo que cumple las reglas de estilo
- y que no hay fallos
-* Realiza los test necesarios, comprueba que funciona y no tiene bugs
-* solicita los cambios que considere oportuno, pregunta lo que no entienda (si es el caso)
-* el revisado argumenta si considera oportuno xq ha implementado así la solucion
-* se llega a un acuerdo de que cambiar
-* realiza los cambios solicitados
-* si los cambios fueron básicos, poco o muy claros informa de que está disponible
-* si los cambios fueron significativos vuelve a solicitar review
-* cuando se tiene el r+ el revisor mergea el pr
-
-***** Varia tareas a la vez ****
-Mientras una tarea está en review puedes empezar otra funcionalidad
-se trata de coger una que no afecte a la funcionalidad en review
-si no se puede o depende puedes hacer un cherry-pick
--->
 			</div>
 
 		</div>
