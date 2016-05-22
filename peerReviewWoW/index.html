@@ -72,48 +72,148 @@
             <p>This is just something that works for us and we thought it would be cool to share.</p>
           </section>
         </section>
+        <section>
+          <section>
+            <h2>Why do we work this way</h2>
+            <ul>
+              <li class="fragment roll-in">
+                'Cause it works!
+              </li>
+              <li class="fragment roll-in">
+                Although to be honest for us it was somewhat of an imposition
+              </li>
+              <li class="fragment roll-in">
+                Mozilla works in a similar way, and on FFOS (FE) they got some ideas from TEF (two
+                weeks sprints, US...) and we some from them (peer reviews!)
+              </li>
+              <li class="fragment roll-in">
+                Although in Mozilla <i>peer</i> doesn't seem to mean the same than in the rest of
+                the world and some peers are more equal than the rest.
+              <li class="fragment roll-in">
+                In Mozilla modules have <i>owners</i> which have the definite word on features,
+                architecture and such, <i>peers</i> which are a subset of the developers than can
+                actually approve reviews (and everything needs a review from a peer before landing)
+                and then there's the rest of the world.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>Why does it work?
+              <span class="fragment roll-in">For us it has a set of advantages</span>
+            </h3>
+            <ul>
+              <li class="fragment roll-in">
+                <b>Code is more uniform:</b> All the code ends having a <i>look and
+                feel</i> beyond the usual style rules, that makes it look more consistent.
+              </li>
+              <li class="fragment roll-in">
+                <b>Less bugs:</b> Having at least an extra pair of eyes check the code means double
+                the chance (more actually!) of picking up some bugs.
+              </li>
+              <li class="fragment roll-in">
+                <b>Make better use of the team abilities:</b> Usually each member of the team has a
+                different set of abilities and even approach to development. By reviewing each
+                other's code we get a code that has a mix of the abilities of at least two
+                members. Both the reviewer and the reviewee can even learn something new!
+              </li>
+              <li class="fragment roll-in">
+                <b>Avoid regressions:</b> Two set of eyes == bigger probability of detecting side
+                effects!
+              </li>
+              <li class="fragment roll-in">
+                <b>Better ownership sense:</b> On a small team everybody ends reviewing everybody
+                else code, code ownership tends to diffuse. It's not longer yours or his or mine,
+                it's ours. Specially when it fails ;)
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>So in short</h3>
+              <p class="fragment roll-in">
+                <b>Better overall code:</b> It's hard to explain but it goes beyond all of the
+                above. It might be that since you <b>know</b> that your code is going to be read
+                (and judged!) you put some extra care into it... But the end result is better code!
+            </p>
+          </section>
+          <section>
+            <h2>So are all advantages?</h2>
+            <h3 class="fragment roll-in">Nope</h3>
+            <ul>
+              <li class="fragment roll-in">
+                At first look it might seems that you know have more work: Your own and the code
+                review from the rest of the team!
+              </li>
+              <li class="fragment roll-in">
+                And at second look, and at third look...
+              </li>
+              <li class="fragment roll-in">
+                ... cause you actually <b>have</b> more work now!
+              </li>
+              <li class="fragment roll-in">
+                Having to wait for review adds some extra time between when you finish something and
+                when that is actually landed.
+              </li>
+              <li class="fragment roll-in">
+                And don't get me started about arguments!
+              </li>
+            </ul>
+<p></p>
+            <h4 class="fragment roll-in">The trick is taking all of the above into account and
+            factoring it on both the effort and time estimations</h4>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>Beyond code review WoW</h1>
+            <h2>Just a quick view to how we organize<h2>
+          </section>
+          <section>
+            <h3>Beyond code review WoW, space view</h3>
+            <ul>
+              <li class="fragment roll-in">
+                Somebody defines, more or less what we should build. Somebody: a partner, BD,
+                product...
+              </li>
+              <li class="fragment roll-in">
+                We define user stories based on that, and organize them in 2-3 weeks sprints. The
+                idea is having something we can show at the end of each sprint.
+              </li>
+              <li class="fragment roll-in">
+                We split the US into subtasks, which will be how we organize/land code changes.
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>Git WoW</h3>
+            <ul>
+              <li class="fragment roll-in">
+                We create a main/master repo for the project.
+              </li>
+              <li class="fragment roll-in">
+                And each of us forks the master repo. We work on our own fork always...
+              </li>
+              <li class="fragment roll-in">
+                And only land on the main repo via Pull Requests, never by directly pushing to it.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Or so the theory goes.</h2>
+            <h3 class="fragment roll-in">The definition of <i>always</i> and <i>never</i> is subject to
+              change though:</h3>
+            <img class="fragment roll-in" src="imgs/ruleexception.png">
+          </section>
+        </section>
+
 <!--
 
-*** Guion revisado, alto nivel:
- - ¿Porque? -> Porque funciona. Pero en realidad a nosotros nos vino impuesto. Pequeña historia de la relacion con Mozilla
  - Que: 
     - Sprints, tareas... (de lo tuyo)
     - Revisiones de codigo obligatorias, anotación con el número de issue para trazabilidad
     - Flexibilidad
- - Inconvenientes: Los tuyos, con alguna gracieta
- - Ventajas:
-  - Mayor uniformidad en las soluciones
-  - Mejores soluciones
-  - Aprovechar las caracteristicas de todos los del equipo
-   - Ejemplo: Cristian, graficos, Antonio reusabilidad y algoritmica, Carmen algoritmica y fiabilidad
-     - Por separado => xxx
-     - Juntos => xx
 
-    
-
-
-*** Beneficios ****
-
-A different perspective.
- “Another set of eyes” adds objectivity.
-
-Vision global :
-Todos los miembros del equipo conocen, al menos por encima, como está hecho todo el proyecto
-
-Evita fallos y regresiones:
-Porque otro miembro del equipo revisa el código subido. Puede tener en cta algo que quizás no viste
-
-Mejora el código
-Siempre hay una forma de mejorar
-
-Aumentan los conocimientos de los miembros del equipo
-Alguien te puede enseñar algo nuevo
-
-*** Inconvenientes ***
-
-- Una primera impresion puede parecer que tienes más trabajo, el tuyo y la revisión del ocmpañero
-
-- Al tener que ser revisado puede parecer que se tarda más en aterrizar algo
 
 
 ****** Antes de empezar ********
@@ -164,210 +264,6 @@ Mientras una tarea está en review puedes empezar otra funcionalidad
 se trata de coger una que no afecte a la funcionalidad en review
 si no se puede o depende puedes hacer un cherry-pick
 -->
-        <section>
-          <section>
-					  <h2 class="fragment highlight-red">Starting from the beginning...</h2>
-					  <h3 class="fragment roll-in">Why?!</h3>
-          </section>
-          <section>
-            <h2>Because we can?</h2>
-            <h3 class="fragment roll-in">No, seriously :)</h3>
-            <h3 class="fragment roll-in">
-				</section>
-        <section>
-          <section>
-            <h2>So what can we do about this?</h2>
-            <img height="400" src="imgs/Clueless Morgan.jpg" />
-          </section>
-          <section>
-            <h3>Assume most people are harmless!</h3>
-            <img src="imgs/1038.jpg"/>
-            <h4 class="fragment roll-in">And give unsigned access to the APIs!</h4>
-            <p class ="fragment roll-in">
-              No, seriously!
-            </p>
-          </section>
-          <section>
-            <h3>But on a controlled way</h3>
-            <p class ="fragment roll-in">
-              You can breathe normally now
-            </p>
-            <p class ="fragment roll-in">
-              Seriously, you were looking blue there for a moment!
-            </p>
-          </section>
-        </section>
-        
-        <section>
-          <section>
-            <h1>Enter Mediators!</h1>
-            <img src="imgs/Mediated API Request.png"/>
-          </section>
-          <section>
-            <h3>The idea, take 1</h3>
-            <h4 class ="fragment roll-in">Add a new class of system apps: mediators</h4>
-            <img class="fragment roll-in" src="imgs/Basic Mediator.png"/>
-            <p class="fragment roll-in">A mediator is a certified/signed app that has direct access to one or more APIs and exposes a mediated access to that API to unprivileged content.</p>
-          </section>
-          <section>
-            <h3 class ="fragment roll-in">Client code</h3>
-					  <pre class="fragment roll-in"><code data-trim>
-navigator.connect(SETTINGS_SERVICE).then(port => {
-  debug('Successfuly established connection to ' + SETTINGS_SERVICE);
-  _port = port;
-  port.onmessage = function (evt) {
-    var handler = _getHandler(evt);
-    if (!handler) {
-      debug('Huh? Got an message with ' + JSON.stringify(evt.data) +
-            ' that I don\'t know what to do with. Discarding!');
-      return;
-     }
-    handler(evt.data);
-  };
-}
-					</code></pre>
-          </section>
-          <section>
-            <h3 class="fragment roll-in">Service code</h3>
-					<pre class="fragment roll-in"><code data-trim>
-this.onconnect = function(msg) {
-  debug('SW onconnect: We should have a port here on msg.source. ' +
-        (msg.source.postMessage ? 'yes!' : 'no :('));
-
-  // TO-DO: This is not very secure... but we could, er should, control the origin here!
-  msg.acceptConnection(true);
-
-  var remotePort = msg.source;
-  var myPortId = this._portId++;
-
-  remotePort.onmessage = aMsg => {
-    // TO-DO: We should implement access control here also!
-    var requestId = aMsg.data.id;
-    if (requestId) {
-      debug('onmessage. Got Request:' + JSON.stringify(aMsg.data));
-      // In sw APIS do not work!!!! We need to request it to the main thread
-
-      this.channelToMT.then(channel => {
-        // TO-DO: Multiplex the channel!
-        channel.postMessage({remotePortId: myPortId, remoteData: aMsg.data});
-      });
-    } else {
-      // Hmm...
-      debug('onmessage: got a message without id');
-    }
-  };
-};
-					</code></pre>
-          </section>
-        </section>
-
-        <section>
-          <section>
-            <h2>This is still way too complicated!</h2>
-            <h3 class="fragment roll-in">And we already have APIs for all those things</h3>
-          </section>
-          <section>
-            <h2>So let's just rewrite the APIs using this!</h2>
-					<pre class="fragment roll-in"><code data-trim>
-// This will have to be a SettingsManager object...
-// Note that since mozSettings constructor is synchronous but we can't make
-// this synchronous, this has an unfortunate difference where the object might
-// disappear later.
-window.navigator.mozSettings = {
-  createLock: createLock,
-  addObserver: addObserver,
-  removeObserver: removeObserver
-};
-
-// Returns a SettingsLock object to safely access settings asynchronously.
-// Note that the lock might be created and yet everything fail on it...
-var createLock = function() {
-  var lock = new FakeSettingsLock();
-  navConnPromise.then(navConnHelper => navConnHelper.sendObject(lock));
-  return lock;
-};
-
-// Allows to bind a function to any change on a given settings
-var addObserver = function(setting, callback) {
-  var observer = new Observer(callback);
-  _observers[setting][callback] = observer;
-  navConnPromise.then(navConnHelper => navConnHelper.sendObject(observer));
-};
-
-// Allows to unbind a function previously set with addObserver.
-var removeObserver = function(setting, callback) {
-  if (!_observers[setting][callback]) {
-    return;
-  }
-  var obRemoval = new ObserverRemoval(_observers[setting][callback]);
-  navConnPromise.then(navConnHelper => navConnHelper.sendObject(obRemoval));
-  delete _observers[setting][callback];
-};
-
-
-					</code></pre>
-          </section>
-        </section>
-        <section>
-          <section>
-            <h3>The idea, take 2</h3>
-            <h4>Add push</h4>
-            <p class="fragment roll-in">The same service worker/mediator can be installed on a FFOS device and a desktop app.</p>
-            <p class="fragment roll-in">The actual API access will of course be available only on a FFOS device.</p>
-            <p class="fragment roll-in">But it can be offered to desktop remotely!</p>
-          </section>
-          <section>
-            <h4>Enrollment stage</h4>
-            <img src="imgs/Initialization Mediated APIs.png"/>
-          </section>
-          <section>
-            <ul>
-              <li><b>Steps 1-3:</b> The first time the mediator is run on a device, it can get a push EndPoint and publish it to the server that hosts the mediator (that has a real URL!)</li>
-              <li><b>Steps 4-6:</b> When the service is accessed through a desktop, it can get and register a push EndPoint (and link it to the same user that already has a device registered). How the actual link is done is out-of-scope, but Firefox Accounts might be used for this.</li>
-            </ul>
-          </section>
-          <section>
-            <h3>API usage stage</h3>
-            <img src="imgs/Mediated API Request.png"/>
-          </section>
-          <section>
-            <h4>Explanation</h4>
-            <ul>
-              <li><b>Steps 7-8:</b> A third party app wants to access some API that's available only on FFOS devices. It uses the polyfills (which will in turn use the mediator).</li>
-              <li><b>Steps 9-11:</b> The mediator know it's not on a FFOS device, and so it sends the petition to the associated FFOS device (again, how the device is associated with an user is out-of-scope but FxA might be used). The actual petition is sent to the device using push.</li>
-              <li><b>Steps 12-14:</b> The mediator on the device executes the functionality requested, and sends the data back to the desktop. Since the device doesn't know where the desktop is (or even if it is a desktop at all) it just sends the answer back to the server. </li>
-              <li><b>Steps 15-18:</b> The server passes the answer back to the mediator service worker (using push again) which in turn passes it back to the calling third party application. </li>
-            </ul>
-          </section>
-        </section>
-
-        <section>
-         <h3>Enter push</h3>
-         <h4 class="fragment roll-in">And the only limit is your imagination!</h4>
-         <p>
-            <ol>
-              <li class="fragment roll-in">Send SMS from your phone using your desktop browser?<span style="color: red;" class="fragment roll-in">: Gotcha!</span></li>
-              <li class="fragment roll-in">Find/block your phone via SMS from your desktop?<span style="color: red;" class="fragment roll-in">: Why, yes!</span></li>
-              <li class="fragment roll-in">Use the same phone specific (same code!) on the phone and desktop?<span style="color: red;" class="fragment roll-in">: Of course!</span></li>
-              <li class="fragment roll-in">Write a *cough*Known IM service*cough* that uses SMS/phone/whatever to identify the user ?<span style="color: red;" class="fragment roll-in">: Yep!</span></li>
-              <li class="fragment roll-in">Increase your success with your favorite sex?<span style="color: red;" class="fragment roll-in">: On the next version!</span></li>
-            </ol>
-         </p>
-         <h3 class="fragment roll-in">And all of that without signing the app!</h3>
-         <p class="fragment roll-in">It does <b>not</b> even have to be an app. Forget the manifest</p>
-        </section>
-				<section>
-					<h2>Write once, run everywhere, do everything FFOS can do!</h2>
-          <h3>It doesn't get sexier than that</h3>
-				</section>
-				<section>
-					<h2>References and links</h2>
-          <ol>
-            <li> <b>navigator.connect polyfill</b> <a href="https://github.com/mcjimenez/nav_connect">https://github.com/mcjimenez/nav_connect/tree/usemessagechannel</a>. Requires MessageChannel working on workers (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=911972">Bug 911972</a>)</li>
-            <li> <b>WebAPIs polyfills (using navigator.connect)</b> <a href="https://github.com/AntonioMA/WebAPI_pf">https://github.com/AntonioMA/WebAPI_pf</a>. Requires either the navigator.connect polyfill or the real navigator.connect. Services require the developer mode to be enabled (to allow hosted certified apps).</li>
-            <li> <b>Gaia radio app using Polyfills</b> <a href="https://github.com/telefonicaid/gaia/tree/hosted-web/apps/fm">https://github.com/telefonicaid/gaia/tree/hosted-web/apps/fm</a>. If using the polyfill, requires the MessageChannel patch, and developer_mode enabled </li>
-          </ol>
-				</section>
 			</div>
 
 		</div>
