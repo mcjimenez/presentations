@@ -1,0 +1,16 @@
+{
+  "openapiOptions": {
+    "port": 8124,
+    "listenAt": "0.0.0.0",
+    "secureServer": true,
+    "certDir": "./config",
+    "clientCAsPath": "./config/clientCAs.pem",
+    "generateFnTemplates": true,
+    "staticPaths": [
+    ],
+    "ymlFile": "./holaMundo.yml",
+    "logLevel": 255,
+    "logStart": true,
+    "logEnd": true
+  }
+}

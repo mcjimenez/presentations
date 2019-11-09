@@ -1,0 +1,50 @@
+swagger: '2.0'
+schemes:
+  - https
+host: holaMundo.insomewhere.igrupobbva
+info:
+  contact:
+    email: carmen.jimenez.cabezas@bbva.com
+    name: Carmen J. Cabezas
+    url: 'https://www.linkedin.com/in/carmenjimenezcabezas/'
+  description: >-
+    Hola mundo
+    https://github.com/mcjimenez/presentations/tree/gh-pages/openapibp<urlDoc>
+  title: sampleServer
+  version: 0.0.1
+basePath: /
+securityDefinitions:
+  checkClientCert:
+    type: oauth2
+    description: >-
+      Checks if the client certificate belong to the boss and add this condition to the context.
+    flow: application
+    tokenUrl: 'https://server/fake'
+    x-implementation-method-name: checkDNCert
+parameters:
+  name:
+    name: name
+    description: The name
+    in: path
+    required: true
+    type: string
+definitions:
+  regards:
+    description: The regard
+    type: string
+paths:
+  '/v1/regards/{name}':
+    get:
+      summary: Say Hello to {name}
+      description: Say Hello to {name}
+      operationId: getRegards
+      parameters:
+        - $ref: '#/parameters/name'
+      responses:
+        '200':
+          description: >-
+            Returns an object with the regard elements
+          schema:
+            $ref: '#/definitions/regards'
+        '400':
+          description: The request will not succeed.
