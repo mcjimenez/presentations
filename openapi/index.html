@@ -89,7 +89,8 @@
           </section>
           <section>
             <h2>Qué ES OpenApi BP</h2>
-            <span class="fragment roll-in">Es un conjunto de librerías que permiten levantar un servidor a partir de la definición del API en formato OpenAPI(swagger) en yaml</span>
+              <span class="fragment roll-in">Es un conjunto de librerías que permiten levantar un servidor</span>
+              <span class="fragment roll-in">a partir de la definición del API en formato OpenAPI(swagger) en yaml</span>
             <ul>
               <li class="fragment roll-in">Editor: http://editor.swagger.io</li>
               <li class="fragment roll-in">Con la ventaja:
@@ -477,7 +478,7 @@ paths:
           <section>
             <h2>SecurityDefinitions vs middleware</h2>
             <ul>
-              <li class="fragment roll-in">Middleware: hace "tareas" antes pero no para ejecución</li>
+              <li class="fragment roll-in">Middleware: realizar "tareas" antes del endpoint pero no para ejecución</li>
               <li class="fragment roll-in">
 SecurityDefinitions: Está pensado para realizar verificaciones que si no se satisfacen impidan ejecución del endpoint
               </li>
@@ -486,9 +487,9 @@ SecurityDefinitions: Está pensado para realizar verificaciones que si no se sat
         </section>
         <section>
           <section>
-            <h2>Funcionamiento de las fc. incluidas en security</h2>
+            <h2>¿Cómo funcionan las security definitions?</h2>
             <ul>
-              <li class="fragment roll-in">Una sola verificacion:
+              <li class="fragment roll-in">Una sola condición:
 <pre class="fragment roll-in">
 paths:
   '/v1/regards/{name}':
@@ -497,7 +498,7 @@ paths:
         - checkArchitectureCert: []
 </pre>
               </li>
-              <li class="fragment roll-in">Dos condiciones AND
+              <li class="fragment roll-in">Dos condiciones como AND
 <pre class="fragment roll-in">
 paths:
   '/v1/regards/{name}':
