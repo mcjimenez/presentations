@@ -127,14 +127,14 @@
             <h2>Ejemplo práctico</h2>
           </section>
           <section>
-            <img src="imgs/porque/idea.png" class="fragment roll-in" data-fragment-index="1">
+            <img src="imgs/porque/idea.png" data-fragment-index="1">
           </section>
           <section>
             <h2>Vamos a crear el HolaMundo</h2>
             <span class="fragment roll-in">Tendremos un endpoint que dado un nombre devuelve un saludo</span>
           </section>
           <section>
-            <img src="imgs/porque/soloDchaDoc.png" class="fragment roll-in" data-fragment-index="1">
+            <img src="imgs/porque/soloDchaDoc.png" data-fragment-index="1">
           </section>
           <section>
               <h2>Crear fichero de definición</h2>
@@ -158,7 +158,7 @@ definitions:
 </pre>
           </section>
           <section>
-<pre class="fragment roll-in">
+<pre>
 paths:
   '/v1/regards/{name}':
     get:
@@ -242,7 +242,7 @@ func New (config Config) *HolaMundo {
             </ul>
           </section>
           <section>
-              <h2>Instanciarlo</h2>
+              <h2>Crear main</h2>
 <pre class="fragment roll-in">
 package main
 import (...)
@@ -374,7 +374,7 @@ X-Rho-Traceid: 5a277244-b394-4a70-8ae3-15d0c3de3fe2
             <img src="imgs/goland/callCertOK.png" >
           </section>
           <section>
-             <img src="imgs/porque/soloDchaDeliver.png" class="fragment roll-in">
+             <img src="imgs/porque/soloDchaDeliver.png">
           </section>
         </section>
         <section>
@@ -482,6 +482,8 @@ paths:
               <li class="fragment roll-in">
 SecurityDefinitions: Está pensado para realizar verificaciones que si no se satisfacen impidan ejecución del endpoint
               </li>
+              <li class="fragment roll-in">Middleware se ejecutan siempre antes de cada endpoint</li>
+              <li class="fragment roll-in">SecurityDefinitions sólo se comprueban en aquellos path en los que hayan sido incluidos</li>
             </ul>
           </section>
         </section>
