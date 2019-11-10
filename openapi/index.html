@@ -417,7 +417,7 @@ x-implementation-middleware:
               <img src="imgs/goland/testCheckBoss.png" class="fragment roll-in" >
           </section>
           <section>
-             <img src="imgs/porque/soloDchaDeliver.png">
+             <img src="imgs/porque/dchaDeliverWithIteration.png">
           </section>
         </section>
         <section>
@@ -558,7 +558,7 @@ paths:
               </li>
               <li class="fragment roll-in">Si todos los handlers son satisfactorios, el contexto pasado al método (path invocado) será el acumulado de los contextos de todos los elementos en la cadena satisfactoria
               </li>
-              <li class="fragment roll-in">Por ejemplo, supongamos las siguiente declaración
+              <li class="fragment roll-in">Mejor con un ejemplo, supongamos:
 <pre class="fragment roll-in">
 security:
   - A[2]
@@ -568,15 +568,13 @@ security:
     E[]
 </pre>
               </li>
-              <li class="fragment roll-in">Si B no tiene exito A no se ejecuta.
+              <li class="fragment roll-in">Si B no tiene éxito A no se ejecuta.
               </li>
-              <li class="fragment roll-in">Si B y A tienen existo, ni C, ni D ni E se ejecutan.
+              <li class="fragment roll-in">Si B y A tienen éxito, ni C, ni D ni E se ejecutan.
               </li>
-              <li class="fragment roll-in">B tiene exito e introduce la clave 'B' en el contexto y A falla
-              </li>
-              <li class="fragment roll-in">C, D y E son exito e introducen 'C', 'D' y 'E'
-              </li>
-              <li class="fragment roll-in">El método llamado tendrá 'C', 'D' y 'E' pero no 'B'
+              <li class="fragment roll-in">B tiene éxito e introduce la clave 'B' en el contexto y A falla</br>
+                <span class="fragment roll-in">además C, D y E son éxito e introducen 'C', 'D' y 'E'</span></br>
+                <span class="fragment roll-in">El método llamado tendrá 'C', 'D' y 'E' pero no 'B'</span>
               </li>
             </ul>
           </section>
