@@ -7,7 +7,7 @@
     "clientCAsPath": "./config/clientCAs.pem",
     "validClientDNs": {
       "personalCert": "CN=.*,OU=Personal Id,OU=Ether Identity,OU=Security Architecture,O=BBVA",
-      "ArchitectureTest": "C=ES, ST=Spain, L=Madrid, O=CJC, CN=mybotservice.com"
+      "myBotService": "C=ES, ST=Spain, L=Madrid, O=CJC, CN=mybotservice.com"
     },
     "generateFnTemplates": true,
     "staticPaths": [
@@ -15,6 +15,18 @@
     "ymlFile": "./holaMundo.yml",
     "logLevel": 255,
     "logStart": true,
-    "logEnd": true
+    "logEnd": true,
+    "AllowEmptyCertMatch": true,
+    "internalHealthPath": "/_ihc",
+    "logInternalHealthCheck": false,
+    "namespace": "swat-work",
+    "mrId": "holaMundo"
+  },
+  "serviceConfig": {
+    "validOrigins": [
+      "https://*:8123",
+      "https://*.appspot.e3r.io",
+      "https://bbva-files.*.*.com"
+    ]
   }
 }

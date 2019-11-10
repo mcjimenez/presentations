@@ -6,6 +6,10 @@ import (
 	"net/http"
 )
 
+const (
+	msgStandeard = "Hola %s"
+	msgBoss = "Buenos días D./Dña. %s"
+)
 // get /v1/regards/{name}
 func (s *HolaMundo) GetRegards(res http.ResponseWriter, req *http.Request) {
 	logger, params, wRes, err := openapi.CommonAPISetup(nil, true, res, req)
@@ -20,8 +24,12 @@ func (s *HolaMundo) GetRegards(res http.ResponseWriter, req *http.Request) {
 	// Define and extract the parameter names
 	name := params["name"]
 	logger.Debug(SummaryKey, fmt.Sprintf("name: %s", name))
-
-	msg := fmt.Sprintf("Hello %s", name)
+	var msg string
+	if isTheBoss := req.Context().Value(clientIsTheBossCtx).(bool); isTheBoss {
+		msg = fmt.Sprintf(msgBoss, name)
+	} else {
+		msg = fmt.Sprintf(msgStandeard, name)
+	}
 
 	_ = wRes.SendJSON(http.StatusOK, msg)
 }

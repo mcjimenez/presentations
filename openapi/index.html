@@ -181,7 +181,7 @@ paths:
               <img src="imgs/goland/swagger.png" class="fragment roll-in" >
           </section>
           <section>
-            <img src="imgs/porque/soloDchaCode.png" class="fragment roll-in" data-fragment-index="1">
+            <img src="imgs/porque/soloDchaCode.png"  data-fragment-index="1">
           </section>
           <section>
               <h2>Crear proyecto y fichero go.mod</h2>
@@ -247,7 +247,7 @@ package main
 import (...)
 
 func main() {
-  instanceBuilder := func(logger2 logger.Logger, opt interface{}) interface{} {
+  instanceBuilder := func(logger2 logger.Logger, opt interface{}) interface{} {        
     return holaMundo.New(opt.(holaMundo.Config))
   }
 
@@ -258,7 +258,7 @@ func main() {
     ConfigFile: "./config/config.json",
   }
 
-  if server, err := openapi.GetServerBootStrap(&specificConfig, instanceBuilder);
+  if server, err := openapi.GetServerBootStrap(&specificConfig, instanceBuilder);     
      err != nil {
     _, _ = fmt.Fprintf(os.Stderr, "error initializing server: %v", err)
   } else {
@@ -297,7 +297,7 @@ X-Rho-Traceid: 5a277244-b394-4a70-8ae3-15d0c3de3fe2
               <ul>
                 <li class="fragment roll-in">En fichero de configuración incluir:
                   <ul>
-                    <li class="fragment roll-in">"logLevel": 255 --> Pensado como máscara aunque no lo hemos implementado</li>
+                    <li class="fragment roll-in">"logLevel": 255 --> Se imprimen todos los niveles por debajo del que se configure
                     <li class="fragment roll-in">"logStart": true, --> Traza de entrada en la llamada</li>
                     <li class="fragment roll-in">"logEnd": true, --> Traza de salida de la llamada</li>
                   </ul>
@@ -345,9 +345,9 @@ X-Rho-Traceid: 5a277244-b394-4a70-8ae3-15d0c3de3fe2
             </ul>
           </section>
           <section>
-            <h2>Aceptar peticiones sólo de ciertos DNs</h2>
+            <h2>Restringir los certificados cliente aceptados</h2>
             <ul>
-              <li class="fragment roll-in">Incluir en el fichero de configuracion los DNs que aceptamos</li>
+              <li class="fragment roll-in">Incluir en el fichero de configuracion los Distinguished Name (DN) que aceptamos</li>
               <li class="fragment roll-in">Pueden ser expresiones regulares:
 <pre class="fragment roll-in"><small>
 "validClientDNs": {
@@ -356,6 +356,8 @@ X-Rho-Traceid: 5a277244-b394-4a70-8ae3-15d0c3de3fe2
 },
 </small></pre>
               </li>
+              <li class="fragment roll-in">Cada uno de los campos del DN (CN, OU, etc.) es una expresión independiente</li>
+              <li class="fragment roll-in">El orden de los campos no es importante</li>
             </ul>
           </section>
           <section>
@@ -382,65 +384,36 @@ X-Rho-Traceid: 5a277244-b394-4a70-8ae3-15d0c3de3fe2
           <section>
             <ul>
               <li>
-                Añadir en el YML en el apartado definiciones de seguridad esta verificación
-<pre><small>
-securityDefinitions:
-  checkClientCert:
-    type: oauth2
-    description: >-
-     Checks if the client certificate belong to the boss and add this condition to the context.
-    flow: application
-    tokenUrl: 'https://server/fake'
-    x-implementation-method-name: checkDNCert
-</small></pre>
+                Añadir en el YML en un middleware
+<pre>
+x-implementation-middleware:
+  - checkBossCert
+</pre>
               </li>
             </ul>
           </section>
           <section>
             <h2>Directamente en el IDE</h2>
-            <img src="imgs/goland/securityDefinitions.png" >
+            <img src="imgs/goland/middleware.png" >
           </section>
           <section>
             <h2>O en nuestro editor</h2>
-            <img src="imgs/goland/securityDefinitionsSwagger.png" >
+            <img src="imgs/goland/middlewareSwagger.png" >
           </section>
           <section>
              <img src="imgs/porque/soloDchaCode.png">
           </section>
           <section>
               <h2>Ejecutar</h2>
-              <img src="imgs/goland/checkDNCert_ko_run.png" class="fragment roll-in" >
+              <img src="imgs/goland/checkBoss_ko_run.png" class="fragment roll-in" >
           </section>
           <section>
               <h2>Ahora sí</h2>
-              <img src="imgs/goland/checkDNCert_ok_run.png" class="fragment roll-in" >
+              <img src="imgs/goland/checkBoss_ok_run.png" class="fragment roll-in" >
           </section>
           <section>
               <h2>Probar</h2>
-              <img src="imgs/goland/testCheckDNCert.png" class="fragment roll-in" >
-          </section>
-          <section>
-            <h2>Por último añadimos algunas opciones más</h2>
-            <ul>
-              <li class="fragment roll-in">Para ping the health:
-<pre>
-    "AllowEmptyCertMatch": true,
-    "internalHealthPath": "/_ihc",
-    "logInternalHealthCheck": false
-</pre>
-              </li>
-              <li class="fragment roll-in">Para ping the health:
-<pre>
-    "shutdownMaxWait": 15,
-    "namespace": "swat-work",
-    "mrId": "sampleServer",
-</pre>
-              </li>
-            </ul>
-          </section>
-          <section>
-              <h2>Quedando nuestro fichero de configuración</h2>
-              <img src="imgs/goland/configLastMTLS.png" class="fragment roll-in" >
+              <img src="imgs/goland/testCheckBoss.png" class="fragment roll-in" >
           </section>
           <section>
              <img src="imgs/porque/soloDchaDeliver.png">
@@ -448,62 +421,72 @@ securityDefinitions:
         </section>
         <section>
           <section>
-            <h2>Configuraciones específicas del servidor</h2>
-            <span class="fragment roll-in">Por ejemplo vamos a meter validación de CORS</span>
-            <img src="imgs/porque/soloDchaCodeToDoc.png" class="fragment roll-in">
-          </section>
-          <section>
-            <h2>Definir función de carga para el servidor</h2>
-            <span class="fragment roll-in">Aquí realizaremos todas las acciones que haya que ejecutar en el arranque del servidor.
-Configuración de bbdd., caches,...</span>
-            <img src="imgs/goland/xImplementationConfiguration.png" class="fragment roll-in">
-          </section>
-          <section>
-             <img src="imgs/porque/soloDchaCode.png">
-          </section>
-          <section>
+            <h2>Algunas opciones más</h2>
             <ul>
-              <li class="fragment roll-in">En config.json meter una key <u>"serviceConfig"</u></li>
-  <li class="fragment roll-in">En "serviceConfig" declararemos todos los parámetros de configuración específicos de este servidor</li>
-  <li class="fragment roll-in">Por ejemplo:
+              <li class="fragment roll-in">Health Check: Expone un endpoint que simplemente devuelve un 200
 <pre>
-  "serviceConfig": {
-    "validOrigins": [
-      "https://*:8123",
-      "https://*.appspot.e3r.io",
-      "https://bbva-files.*.*.com"
-    ]
-  }
+    "AllowEmptyCertMatch": true,
+    "internalHealthPath": "/_ihc",
+    "logInternalHealthCheck": false
+</pre>
+              </li>
+              <li class="fragment roll-in">Logs: Permite definir el namespace y el mrId para las trazas
+<pre>
+    "namespace": "swat-work",
+    "mrId": "holaMundo",
 </pre>
               </li>
             </ul>
           </section>
           <section>
-            <h2>Incluir sección nueva en la configuración </h2>
-            <img src="imgs/goland/serviceConfig.png" class="fragment roll-in" >
-          </section>
-          <section>
-            <h2>E implementar la función</h2>
-            <span class="fragment roll-in">El framework ya nos dio el esqueleto. Sólo hay que copiarlo e implementarlo</span>
-            <img src="imgs/goland/loadConfig.png" class="fragment roll-in">
-          </section>
-          <section>
-            <h2>¿Y ya está?</h2>
+            <h2>Configuración específica de nuestro servidor</h2>
             <ul>
-              <li class="fragment roll-in">Todavía no hemos verificado nada</li>
-              <li class="fragment roll-in">Necesitamos "algo" que se ejecute antes de nuestra implementación del path</li>
-              <li class="fragment roll-in">Y que si su verificación falla este no llegue a ejecutarse, o si es correcto que incluya las cabeceras adecuadas en la respuesta</li>
-              <li class="fragment roll-in">Respuesta: los middleware</li>
+              <li class="fragment roll-in">Si añadimos una sección más ya lo tenemos</li>
             </ul>
-              <img src="imgs/goland/addCors.png" class="fragment roll-in">
+            <img class="fragment roll-in" src="imgs/goland/config.png">
           </section>
           <section>
-            <h2>Vamos a implementar esta nueva función</h2>
-            <img src="imgs/goland/addCors_working.png" class="fragment roll-in">
+            <h2>Más opciones de definición (yml)</h2>
+            <ul>
+              <li class="fragment roll-in">Configuración: Función que se ejecuta una vez en el arranque. Ideal para las operaciones de inicialización (Configurar CORS, bbdd, caches...)
+<pre>
+x-implementation-configuration: loadConfig
+</pre>
+              </li>
+              <li class="fragment roll-in">SecurityDefinitions: Validaciones de seguridad a realizar antes de ejecutar la fc. del endpoint
+<pre>
+securityDefinitions:
+  checkKernelCert:
+    type: oauth2
+    description: Checks that the client certificate is valid.
+    flow: application
+    tokenUrl: 'https://server/fake'
+    x-implementation-method-name: checkKernelCert
+...
+paths:
+  '/_service/info':
+    get:
+      ...
+      security:
+        - checkKernelCert: []
+
+</pre>
+              </li>
+            </ul>
           </section>
           <section>
-            <h2>¿Y si tenemos verificaciones que hacer antes de ejecutar un path concreto?</h2>
-            <span class="fragment roll-in">Se pueden declarar middlewares a nivel de path. Ejemplos:</span>
+            <h2>SecurityDefinitions vs middleware</h2>
+            <ul>
+              <li class="fragment roll-in">Middleware: hace "tareas" antes pero no para ejecución</li>
+              <li class="fragment roll-in">
+SecurityDefinitions: Está pensado para realizar verificaciones que si no se satisfacen impidan ejecución del endpoint
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Funcionamiento de las fc. incluidas en security</h2>
             <ul>
               <li class="fragment roll-in">Una sola verificacion:
 <pre class="fragment roll-in">

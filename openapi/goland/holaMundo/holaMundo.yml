@@ -13,13 +13,8 @@ info:
   title: holaMundo
   version: 0.0.1
 basePath: /
-checkClientCert:
-  type: oauth2
-  description: >-
-    Checks if the client certificate belong to the boss and add this condition to the context.
-  flow: application
-  tokenUrl: 'https://server/fake'
-  x-implementation-method-name: checkDNCert
+x-implementation-middleware:
+  - checkBossCert
 parameters:
   name:
     name: name
