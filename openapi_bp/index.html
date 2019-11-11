@@ -477,35 +477,23 @@ paths:
           </section>
           <section>
             <h2>Tipos de SecurityDefinitions</h2>
+            <ul>
+              <li class="fragment roll-in"><b><u>Basic</u></b>: Pasará a la fc. el usr/pwd</li>
+              <li class="fragment roll-in"><b><u>apiKey</u></b>: Para validar una clave. Pasará a la fc. el valor sacado de "in" (header o query) en el parámetro "name"
 <pre>
-  basicAuth:
-    type: <b><u>basic</u></b>
-    description: Pasará al fc. el usr/pwd
-    x-implementation-method-name: basicAuthChecker
   apiKeyHeader:
-    type: <b><u>apiKey</u></b>
-    description: >-
-     Para Validar una clave. Pasará a la fc. el valor sacado de "in"
-     (header o query) en el parámetro "name"
+    type: apiKey
+    description: Validar uuid
     in: header
     name: apikey
     x-implementation-method-name: tokenAuth
-  bearerToken:
-    type: <b><u>bearer</u></b>
-    description: >-
-       Usado cuando queremos validar un JWT firmado con RSA.
-       La fc. implementada debe devolver un puntero a un objeto de tipo
-       BearerToken, a partir del método y el path.
-       OpenapiBP llamará al método Validate del objeto con el token extraido
-       de la cabecera indicada.
-    in: header
-    name: Authorization
-    x-implementation-method-name: bearerTokenValidator
-  custom:
-    type: <b><u>custom</u></b>
-    description: Cualquier tipo no descrito arriba. Recibe la request completa
-    x-implementation-method-name: customAuth
 </pre>
+              </li>
+              <li class="fragment roll-in"><b><u>bearer</u></b>:Usado cuando queremos validar un JWT firmado con RSA. La fc. implementada debe devolver un puntero a un objeto de tipo BearerToken, a partir del método y el path. OpenapiBP llamará al método Validate del objeto con el token extraido de la cabecera indicada.
+              </li>
+              <li class="fragment roll-in"><b><u>custom</u></b>: Cualquier tipo no incluido en los anteriores. Recibe la request completa
+              </li>
+            <ul>
           </section>
           <section>
             <h2>SecurityDefinitions vs middleware</h2>
