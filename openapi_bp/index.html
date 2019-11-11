@@ -489,7 +489,7 @@ paths:
     x-implementation-method-name: tokenAuth
 </pre>
               </li>
-              <li class="fragment roll-in"><b><u>bearer</u></b>:Usado cuando queremos validar un JWT firmado con RSA. La fc. implementada debe devolver un puntero a un objeto de tipo BearerToken, a partir del método y el path. OpenapiBP llamará al método Validate del objeto con el token extraido de la cabecera indicada.
+              <li class="fragment roll-in"><b><u>bearer</u></b>: Usado cuando queremos validar un JWT firmado con RSA. La fc. implementada debe devolver un puntero a un objeto de tipo BearerToken, a partir del método y el path. OpenapiBP llamará al método Validate del objeto con el token extraido de la cabecera indicada.
               </li>
               <li class="fragment roll-in"><b><u>custom</u></b>: Cualquier tipo no incluido en los anteriores. Recibe la request completa
               </li>
