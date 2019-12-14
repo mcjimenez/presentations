@@ -1,0 +1,94 @@
+.reveal section table tr td.title {
+  text-align: center;
+}
+
+span.header {
+  position: absolute;
+  top: 40px;
+  left: 250px;
+  font-size: 20px;
+  color: #FFFFFF;
+}
+
+.linea {
+background-color: #FFFFFF;
+width: 3px;
+height: 30px;
+padding-left: 21px;
+margin-left: 20px;
+position: absolute;
+top: 35px;
+left: 240px;
+}
+
+img.header {
+  position: relative;
+  top: 10px;
+  left: 30px;
+  z-index: 1;
+  margin: 0px 15px 0px 0px;
+}
+
+.reveal section img.arigato {
+  width: 250px;
+  height: 200px;
+  border: 0px;
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0);
+  background: rgba(255, 255, 255, 0);
+}
+
+img.noBorder,
+.reveal section img.noBorder{
+  border: 0px;
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0);
+  background: rgba(255, 255, 255, 0);
+  width: 199px;
+  height: 66px;
+}
+
+.ninjaPresentation {
+    fill: rgb(0, 0, 0);
+    width: 194;
+    height: 66;
+    transform: matrix(41.2286, 0, 0, 41.2288, 145362, 40250.8);
+    x: 0;
+    y: 0;
+}
+.reveal.backgroundColor {
+   background: #6cb69e;
+}
+.reveal.ninjaBackground {
+   background-image: url(../imgs/ninja/bck.gif);
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: auto;
+}
+
+.reveal section img.porque {
+   position: absolute;
+   left: 225px;
+   background: rgba(255, 255, 255, 0);
+}
+
+div.rectangle {
+    border:7px solid #FFF;
+    position: absolute;
+    display: inline-block;
+    text-align: center;
+}
+div.rectangle * {
+    padding: 5px 10px;
+}
+
+div.rectIdea {
+ # left: 100px;
+  top: 100px;
+}
+div.rectCod1 {
+  left: 200px;
+  top: 200px;
+}
+div.rectDoc1 {
+  left: 200px;
+  top: 300px;
+}
