@@ -1,3 +1,7 @@
+.reveal a.header {
+  position: static !important;
+}
+
 .reveal section table tr td.title {
   text-align: center;
 }
