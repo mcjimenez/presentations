@@ -15,14 +15,14 @@ span.header {
 }
 
 .linea {
-background-color: #FFFFFF;
-width: 3px;
-height: 30px;
-padding-left: 21px;
-margin-left: 20px;
-position: absolute;
-top: 35px;
-left: 240px;
+  background-color: #FFFFFF;
+  width: 3px;
+  height: 30px;
+  padding-left: 21px;
+  margin-left: 20px;
+  position: absolute;
+  top: 35px;
+  left: 240px;
 }
 
 img.header {
@@ -51,12 +51,12 @@ img.noBorder,
 }
 
 .ninjaPresentation {
-    fill: rgb(0, 0, 0);
-    width: 194;
-    height: 66;
-    transform: matrix(41.2286, 0, 0, 41.2288, 145362, 40250.8);
-    x: 0;
-    y: 0;
+  fill: rgb(0, 0, 0);
+  width: 194;
+  height: 66;
+  transform: matrix(41.2286, 0, 0, 41.2288, 145362, 40250.8);
+  x: 0;
+  y: 0;
 }
 .reveal.backgroundColor {
    background: #6cb69e;
@@ -66,6 +66,7 @@ img.noBorder,
    background-repeat: no-repeat;
    background-position: center;
    background-size: auto;
+   background-color: #6cb69e;
 }
 
 .reveal section img.porque {
@@ -75,13 +76,13 @@ img.noBorder,
 }
 
 div.rectangle {
-    border:7px solid #FFF;
-    position: absolute;
-    display: inline-block;
-    text-align: center;
+  border:7px solid #FFF;
+  position: absolute;
+  display: inline-block;
+  text-align: center;
 }
 div.rectangle * {
-    padding: 5px 10px;
+  padding: 5px 10px;
 }
 
 div.rectIdea {
