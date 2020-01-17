@@ -102,3 +102,50 @@ div.rectDoc1 {
   background-color: #313131;
   width: 99%;
 }
+
+.reveal a:not(.image) {
+  color: #b54141;
+  text-decoration: none;
+  -webkit-transition: color .15s ease;
+  -moz-transition: color .15s ease;
+  -ms-transition: color .15s ease;
+  -o-transition: color .15s ease;
+  transition: color .15s ease;
+}
+
+.reveal a:not(.image):hover {
+  color: #933f3f;
+}
+
+#.reveal .roll span:after {
+#  color: #fff;
+#  background: #933f3f;
+#}
+
+.reveal .controls div.navigate-left,
+.reveal .controls div.navigate-left.enabled {
+  border-right-color: #b54141; }
+
+.reveal .controls div.navigate-right,
+.reveal .controls div.navigate-right.enabled {
+  border-left-color: #b54141; }
+
+.reveal .controls div.navigate-up,
+.reveal .controls div.navigate-up.enabled {
+  border-bottom-color: #b54141; }
+
+.reveal .controls div.navigate-down,
+.reveal .controls div.navigate-down.enabled {
+  border-top-color: #b54141; }
+
+.reveal .controls div.navigate-left.enabled:hover {
+  border-right-color: #b54141; }
+
+.reveal .controls div.navigate-right.enabled:hover {
+  border-left-color: #b54141; }
+
+.reveal .controls div.navigate-up.enabled:hover {
+  border-bottom-color: #b54141; }
+
+.reveal .controls div.navigate-down.enabled:hover {
+  border-top-color: #b54141; }

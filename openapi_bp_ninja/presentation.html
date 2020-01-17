@@ -15,8 +15,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <link rel="stylesheet" href="css/reveal.min.css">
-    <link rel="stylesheet" href="css/specific.css">
     <link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="css/specific.css">
 
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -233,12 +233,11 @@ type HolaMundo struct {
   config *Config
 }
 
-func New (config Config) *HolaMundo {     
+func New (config Config) *HolaMundo { 
   return &HolaMundo{
     config: &config,
   }
-}
-                </pre>
+}               </pre>
               </li>
             </ul>
           </section>
@@ -249,7 +248,7 @@ package main
 import (...)
 
 func main() {
-  instanceBuilder := func(logger2 logger.Logger, opt interface{}) interface{} {            
+  instanceBuilder := func(logger2 logger.Logger, opt interface{}) interface{} {
     return holaMundo.New(opt.(holaMundo.Config))
   }
 
@@ -260,7 +259,7 @@ func main() {
     ConfigFile: "./config/config.json",
   }
 
-  if server, err := openapi.GetServerBootStrap(&specificConfig, instanceBuilder);            
+  if server, err := openapi.GetServerBootStrap(&specificConfig, instanceBuilder);
      err != nil {
     _, _ = fmt.Fprintf(os.Stderr, "error initializing server: %v", err)
   } else {
@@ -532,7 +531,7 @@ paths:
 </pre>
 <pre class="fragment roll-in">
 Equivale a:
-(checkArchitectureCert() && architectureEndUser())
+(checkArchitectureCert() && architectureEndUser()) 
 </pre>
               </li>
             </ul>

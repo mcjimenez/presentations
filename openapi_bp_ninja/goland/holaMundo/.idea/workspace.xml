@@ -20,7 +20,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/routes/middleware.go">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="172">
+                <state relative-caret-position="195">
                   <caret line="18" selection-start-line="18" selection-end-line="18" />
                 </state>
               </provider>
@@ -81,8 +81,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="79" />
-    <option name="y" value="32" />
+    <option name="x" value="872" />
+    <option name="y" value="250" />
     <option name="width" value="1245" />
     <option name="height" value="848" />
   </component>
@@ -157,14 +157,14 @@
     </configuration>
   </component>
   <component name="ToolWindowManager">
-    <frame x="79" y="32" width="1245" height="848" extended-state="0" />
+    <frame x="872" y="250" width="1245" height="848" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13632585" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.17195767" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.17195767" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -245,7 +245,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/middleware.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
+        <state relative-caret-position="195">
           <caret line="18" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
