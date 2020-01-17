@@ -243,13 +243,13 @@ func New (config Config) *HolaMundo {
             </ul>
           </section>
           <section>
-              <h2>Crear main</h2>
+              <h2>Escribir main</h2>
 <pre class="fragment roll-in">
 package main
 import (...)
 
 func main() {
-  instanceBuilder := func(logger2 logger.Logger, opt interface{}) interface{} {        
+  instanceBuilder := func(logger2 logger.Logger, opt interface{}) interface{} {            
     return holaMundo.New(opt.(holaMundo.Config))
   }
 
@@ -260,7 +260,7 @@ func main() {
     ConfigFile: "./config/config.json",
   }
 
-  if server, err := openapi.GetServerBootStrap(&specificConfig, instanceBuilder);     
+  if server, err := openapi.GetServerBootStrap(&specificConfig, instanceBuilder);            
      err != nil {
     _, _ = fmt.Fprintf(os.Stderr, "error initializing server: %v", err)
   } else {
@@ -497,7 +497,7 @@ paths:
             <ul>
           </section>
           <section>
-            <h2>SecurityDefinitions vs middleware</h2>
+            <h2>securityDefinitions vs middleware</h2>
             <ul>
               <li class="fragment roll-in">Middleware: realizar "tareas" antes del endpoint pero no para ejecución</li>
               <li class="fragment roll-in">
