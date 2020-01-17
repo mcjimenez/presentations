@@ -117,10 +117,10 @@ div.rectDoc1 {
   color: #933f3f;
 }
 
-#.reveal .roll span:after {
-#  color: #fff;
-#  background: #933f3f;
-#}
+.reveal .roll span:after {
+  color: #fff;
+  background: #933f3f;
+}
 
 .reveal .controls div.navigate-left,
 .reveal .controls div.navigate-left.enabled {
