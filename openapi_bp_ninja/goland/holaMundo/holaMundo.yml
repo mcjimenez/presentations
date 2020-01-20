@@ -14,30 +14,39 @@ info:
   version: 0.0.1
 basePath: /
 x-implementation-middleware:
-  - checkBossCert
+  - checkPremium
 parameters:
-  name:
-    name: name
-    description: The name
+  person:
+    name: person
+    description: Name of the person that will be included on the greeting.
     in: path
     required: true
     type: string
 definitions:
   regards:
-    description: The regard
+    description: >-
+      A Dictionary of `greeting`, where the keys are the language in which the greeting is
+    type: object
+    additionalProperties:
+      $ref: '#/definitions/greeting'
+  greeting:
+    description: The customized greeting that is generated
     type: string
 paths:
-  '/v1/regards/{name}':
+  '/v1/regards/{person}':
     get:
-      summary: Say Hello to {name}
-      description: Say Hello to {name}
+      summary: Returns a greeting to the given person
+      description: >-
+        Returns a greeting that is personalized to the given person.
+        If the person is a premium user,
+        then the greeting will be returned in several languages.
       operationId: getRegards
       parameters:
-        - $ref: '#/parameters/name'
+        - $ref: '#/parameters/person'
       responses:
         '200':
           description: >-
-            Returns an object with the regard elements
+            The request was succeed.
           schema:
             $ref: '#/definitions/regards'
         '400':

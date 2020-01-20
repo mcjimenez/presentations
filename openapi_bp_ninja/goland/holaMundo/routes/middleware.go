@@ -7,13 +7,13 @@ import (
 	"strings"
 )
 
-const cnBoss = "mybotservice.com"
-const clientIsTheBossCtx = "isTheBoss"
+const cnPremium = "mybotservice.com"
+const clientIsPremiumCtx = "isPremium"
 
-func (s *HolaMundo) CheckBossCert(res http.ResponseWriter, req *http.Request) (context.Context, error) {
+func (s *HolaMundo) CheckPremium(res http.ResponseWriter, req *http.Request) (context.Context, error) {
 	ctx := context2.New(req.Context())
 
-	isABoss := strings.ToLower(ctx.ClientCert().Subject.CommonName) == cnBoss
+	isPremium := strings.ToLower(ctx.ClientCert().Subject.CommonName) == cnPremium
 
-	return ctx.SetValue(clientIsTheBossCtx, isABoss).Context(), nil
+	return ctx.SetValue(clientIsPremiumCtx, isPremium).Context(), nil
 }

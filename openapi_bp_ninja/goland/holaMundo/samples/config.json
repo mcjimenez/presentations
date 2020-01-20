@@ -19,6 +19,7 @@
     "AllowEmptyCertMatch": true,
     "internalHealthPath": "/_ihc",
     "logInternalHealthCheck": false,
+    "logConnections": true,
     "namespace": "swat-work",
     "mrId": "holaMundo"
   },

@@ -7,10 +7,13 @@ import (
 )
 
 const (
-	msgStandeard = "Hola %s"
-	msgBoss = "Buenos días D./Dña. %s"
+	msgSpanish = "Hola %s"
+	msgEnglish = "Hello %s"
 )
-// get /v1/regards/{name}
+
+type Regards map[string]string
+
+// get /v1/regards/{person}
 func (s *HolaMundo) GetRegards(res http.ResponseWriter, req *http.Request) {
 	logger, params, wRes, err := openapi.CommonAPISetup(nil, true, res, req)
 	if err != nil { // Error processing already done. Or not.
@@ -20,15 +23,15 @@ func (s *HolaMundo) GetRegards(res http.ResponseWriter, req *http.Request) {
 		})
 		return
 	}
-
 	// Define and extract the parameter names
-	name := params["name"]
-	logger.Debug(SummaryKey, fmt.Sprintf("name: %s", name))
-	var msg string
-	if isTheBoss := req.Context().Value(clientIsTheBossCtx).(bool); isTheBoss {
-		msg = fmt.Sprintf(msgBoss, name)
-	} else {
-		msg = fmt.Sprintf(msgStandeard, name)
+	person := params["person"]
+	logger.Debug(SummaryKey, fmt.Sprintf("Name: %s", person))
+
+	msg := Regards{
+		"english" : fmt.Sprintf(msgEnglish, person),
+	}
+	if isPremium := req.Context().Value(clientIsPremiumCtx).(bool); isPremium {
+		msg["spanish"] = fmt.Sprintf(msgSpanish, person)
 	}
 
 	_ = wRes.SendJSON(http.StatusOK, msg)

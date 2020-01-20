@@ -146,32 +146,32 @@ schemes:
 host: holaMundo.appspot.e3r.io
 basePath: /
 parameters:
-  name:
-    name: name
-    description: The name
+  person:
+    name: person
+    description: Name of the person that will be included on the greeting
     in: path
     required: true
     type: string
 definitions:
   regards:
-    description: The regard
+    description: The customized greeting that is generated
     type: string
 </pre>
           </section>
           <section>
 <pre>
 paths:
-  '/v1/regards/{name}':
+  '/v1/regards/{person}':
     get:
-      summary: Say Hello to {name}
-      description: Say Hello to {name}
+      summary: Returns a greeting to the given person
+      description: Returns a greeting that is personalized to the given person.
       operationId: getRegards
       parameters:
-        - $ref: '#/parameters/name'
+        - $ref: '#/parameters/person'
       responses:
         '200':
           description: >-
-            Returns an object with the regard elements
+            The request was succeed
           schema:
             $ref: '#/definitions/regards'
         '400':
@@ -379,7 +379,7 @@ X-Rho-Traceid: 5a277244-b394-4a70-8ae3-15d0c3de3fe2
         </section>
         <section>
           <section>
-            <h2>Si se presenta el jefe, saludarle más respetuosamente</h2>
+            <h2>Si es usuario premium saludarle en dos idiomas</h2>
              <img class="fragment roll-in" src="imgs/porque/soloDchaCodeToDoc.png" class="fragment roll-in">
           </section>
           <section>
@@ -388,7 +388,7 @@ X-Rho-Traceid: 5a277244-b394-4a70-8ae3-15d0c3de3fe2
                 Añadir en el YML un middleware
 <pre>
 x-implementation-middleware:
-  - checkBossCert
+  - checkPremium
 </pre>
               </li>
             </ul>
@@ -406,15 +406,15 @@ x-implementation-middleware:
           </section>
           <section>
               <h2>Ejecutar</h2>
-              <img src="imgs/goland/checkBoss_ko_run.png" class="fragment roll-in" >
+              <img src="imgs/goland/checkPremium_ko_run.png" class="fragment roll-in" >
           </section>
           <section>
               <h2>Ahora sí</h2>
-              <img src="imgs/goland/checkBoss_ok_run.png" class="fragment roll-in" >
+              <img src="imgs/goland/checkPremium_ok_run.png" class="fragment roll-in" >
           </section>
           <section>
               <h2>Probar</h2>
-              <img src="imgs/goland/testCheckBoss.png" class="fragment roll-in" >
+              <img src="imgs/goland/testCheckPremium.png" class="fragment roll-in" >
           </section>
           <section>
              <img src="imgs/porque/dchaDeliverWithIteration.png">
@@ -428,7 +428,12 @@ x-implementation-middleware:
 <pre>
     "AllowEmptyCertMatch": true,
     "internalHealthPath": "/_ihc",
-    "logInternalHealthCheck": false
+    "logInternalHealthCheck": false,
+</pre>
+              </li>
+              <li class="fragment roll-in">log Connections:
+<pre>
+    "logConnections": true,
 </pre>
               </li>
               <li class="fragment roll-in">Logs: Permite definir el namespace y el mrId para las trazas
@@ -514,7 +519,7 @@ SecurityDefinitions: Está pensado para realizar verificaciones que si no se sat
               <li class="fragment roll-in">Una sola condición:
 <pre class="fragment roll-in">
 paths:
-  '/v1/regards/{name}':
+  '/v1/regards/{person}':
     get:
       security:
         - checkArchitectureCert: []
@@ -523,7 +528,7 @@ paths:
               <li class="fragment roll-in">Dos condiciones como AND
 <pre class="fragment roll-in">
 paths:
-  '/v1/regards/{name}':
+  '/v1/regards/{person}':
     get:
       security:
         - checkArchitectureCert: [1]
@@ -541,7 +546,7 @@ Equivale a:
               <li class="fragment roll-in">O un OR
 <pre class="fragment roll-in">
 paths:
-  '/v1/regards/{name}':
+  '/v1/regards/{person}':
     get:
       security:
         - checkArchitectureCert: [1]
@@ -556,7 +561,7 @@ Equivale a:
               <li class="fragment roll-in">O todo junto
 <pre class="fragment roll-in">
 paths:
-  '/v1/regards/{name}':
+  '/v1/regards/{person}':
     get:
       security:
         - checkArchitectureCert: [1]

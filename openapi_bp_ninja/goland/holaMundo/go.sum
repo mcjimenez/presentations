@@ -41,9 +41,14 @@ github.com/xdg/stringprep v1.0.0/go.mod h1:Jhud4/sHMO4oL310DaZAKk9ZaJ08SJfe+sJh0
 github.com/youtube/vitess v3.0.0-rc.3+incompatible/go.mod h1:hpMim5/30F1r+0P8GGtB29d0gWHr0IZ5unS+CG0zMx8=
 globaldevtools.bbva.com/bbva_global_secaas_swat_components/go-openapi-bp.git v1.1.18 h1:gmoqnNAFtbABnCapRxLqaaNi2dNspsybkRJRRZWA6DA=
 globaldevtools.bbva.com/bbva_global_secaas_swat_components/go-openapi-bp.git v1.1.18/go.mod h1:8aQfTxRb/GLA/PWlPVPDq3VKARy7Azsg62gJFioDBZ0=
+globaldevtools.bbva.com/bbva_global_secaas_swat_components/go-openapi-bp.git v1.1.21 h1:BZFpE7qw93laKsA3P0yjC/3p7Nj0e38yq64l8TAPUlU=
+globaldevtools.bbva.com/bbva_global_secaas_swat_components/go-openapi-bp.git v1.1.21/go.mod h1:cwC0oRR3FjahyowEx+FWbf7x+wsQzTTB2uvlw7KFC9E=
+globaldevtools.bbva.com/bbva_global_secaas_swat_components/go-utils.git v0.0.0-20190424103447-9f521de79267 h1:ClylU8/CESBXNZ3KfcWVrUvGaFwBmOUjMqPoVCYh6b4=
 globaldevtools.bbva.com/bbva_global_secaas_swat_components/go-utils.git v0.0.0-20190424103447-9f521de79267/go.mod h1:PPO6iR594wkTilpEtOx8YhqDEDoPxA/T2pGndRmJyDw=
 globaldevtools.bbva.com/bbva_global_secaas_swat_components/go-utils.git v1.0.17 h1:W2Z2MKLdU7/oeWS/XIkAiR/Q6QtLfNfzeDgYuz85z9c=
 globaldevtools.bbva.com/bbva_global_secaas_swat_components/go-utils.git v1.0.17/go.mod h1:uZB0BN+oehE+BPowZEIalZ0MbJdcnleNtU/0NrjzIog=
+globaldevtools.bbva.com/bbva_global_secaas_swat_components/go-utils.git v1.0.26 h1:y+5pns6uxiEen8LkXqz+6tFvPs/vbgRWmVb+lKRtLoU=
+globaldevtools.bbva.com/bbva_global_secaas_swat_components/go-utils.git v1.0.26/go.mod h1:uZB0BN+oehE+BPowZEIalZ0MbJdcnleNtU/0NrjzIog=
 globaldevtools.bbva.com/semaas/deltago.git v0.0.0-20190305155036-273f50690e18 h1:7DD8WEFdOsHU42arBo5yQ4WVg3Eco/I8aCYAJWrz9cI=
 globaldevtools.bbva.com/semaas/deltago.git v0.0.0-20190305155036-273f50690e18/go.mod h1:TvxnigBiNLOTdwJIt1dY+hBi9O0tdmRvtKB6wcQkCSU=
 globaldevtools.bbva.com/semaas/deltago.git v0.2.4/go.mod h1:TvxnigBiNLOTdwJIt1dY+hBi9O0tdmRvtKB6wcQkCSU=
