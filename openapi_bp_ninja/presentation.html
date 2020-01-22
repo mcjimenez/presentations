@@ -295,15 +295,28 @@ X-Rho-Traceid: 5a277244-b394-4a70-8ae3-15d0c3de3fe2
           </section>
           <section>
             <h2>Activar trazas</h2>
-              <ul>
-                <li class="fragment roll-in">En fichero de configuración incluir:
-                  <ul>
-                    <li class="fragment roll-in">"logLevel": 255 --> Se imprimen todos los niveles por debajo del que se configure
-                    <li class="fragment roll-in">"logStart": true, --> Traza de entrada en la llamada</li>
-                    <li class="fragment roll-in">"logEnd": true, --> Traza de salida de la llamada</li>
-                  </ul>
-                </li>
-              </ul>
+            <ul>
+              <li class="fragment roll-in">logLevel: Activar trazas e imprimir todos los niveles por debajo del que se configure
+<pre>
+   "logLevel": 255
+</pre>
+              </li>
+              <li class="fragment roll-in">logStart: Imprimir traza de entrada en la llamada
+<pre>
+  "logStart": true
+</pre>
+              </li>
+              <li class="fragment roll-in">logEnd: Imprimir traza de salida en la llamada
+<pre>
+  "logEnd": true
+</pre>
+              </li>
+              <li class="fragment roll-in">logConnections: Registrar conexiones y desconexiones a nivel TCP. Útil por ejemplo para saber cuanto tarda en comenzar a dar servicio y depurar problemas de negociación TLS
+<pre>
+  "logConnections": true
+</pre>
+              </li>
+            </ul>
           </section>
           <section>
               <h2>Resultado</h2>
@@ -429,11 +442,6 @@ x-implementation-middleware:
     "AllowEmptyCertMatch": true,
     "internalHealthPath": "/_ihc",
     "logInternalHealthCheck": false,
-</pre>
-              </li>
-              <li class="fragment roll-in">log Connections: Registra conexiones y desconexiones a nivel TCP. Útil por ejemplo para saber cuanto tarda en comenzar a dar servicio y depurar problemas de negociación TLS.
-<pre>
-    "logConnections": true,
 </pre>
               </li>
               <li class="fragment roll-in">Logs: Permite definir el namespace y el mrId para las trazas
