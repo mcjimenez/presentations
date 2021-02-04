@@ -109,7 +109,7 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
             <div class="box01">
               <div class="box02">
                 <ol>
-                  <li class="fragment roll-in"> Definirlas políticas: En lenguaje formal en que expresar las reglas (o condiciones) de acceso
+                  <li class="fragment roll-in"> Definir las políticas: En lenguaje formal en que expresar las reglas (o condiciones) de acceso
                   </li>
                   <li class="fragment roll-in"> Repositorio donde almacenar las reglas de AuthZ</li>
                 </ol>
@@ -129,23 +129,6 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
                 <li class="fragment roll-in">Basado en XML en base a reglas. </li>
                 <li class="fragment roll-in">Va haciendo matches: A encaja con B entonces Permite acceso o deniega acceso, pon estas condiciones</li>
               </ul>
-            </div>
-          </section>
-          <section>
-            <img src="imgs/xacmlArchitecture.png" class="">
-            <div class="box01">
-              <div class="box02">
-                <ul>
-                  <li class="fragment roll-in">En las políticas se pueden definir reglas que dependen de fuentes de datos externas</li>
-                  <li class="fragment roll-in">Ej. en "Sólo las personas que pertenecen al departamento de nóminas" Pertenecer al dpto Nominas puede ser consulta a una bbdd externa</li>
-
-                </ul>
-              </div>
-              <div class="box04"></div>
-              <div class="fragment roll-in box03 left">
-               --> PIP
-               </BR>A las fuentes de datos externas se accede mediante PIP's
-              </div>
             </div>
           </section>
           <section>
@@ -220,20 +203,6 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
           <section>
             <h2>NAUTHILUS</h2>
             <ul>
-              <li class="fragment roll-in">Se encarga de cumplir, junto con LUX, si puedes o no acceder y en qué condiciones</li>
-              <li class="fragment roll-in">Quien decide si tiene que pedirte un 2do factor y qué 2do factor es LUX:
-                <ul>
-                  <li class="fragment roll-in">La regla de AuthZ incluye llamar a un PIP para obtener si la ip desde la que se accede es interna o externa</li>
-                  <li class="fragment roll-in">interna --> Acceder sin 2do factor | externa -> Pedir 2do factor</li>
-                  <li class="fragment roll-in">Otra regla: si el SP es upstream y accedes desde una red externa te pido 2do factor y entre los 2dos factores si el usuario pertenece a arquitectura te ofrezco el doble factor de google</li>
-                </ul>
-              </li>
-              <li class="fragment roll-in">Nautilus sólo (y nada menos) se encarga de interpretar la respuesta y encargarse de cumplirla</li>
-            </ul>
-          </section>
-          <section>
-            <h2>NAUTHILUS</h2>
-            <ul>
               <li class="fragment roll-in">Es un IDP</li>
               <li class="fragment roll-in">Un IDP es el responsable de proveer la identidad de un usuario</li>
               <li class="fragment roll-in">Por tanto es la pieza en la que podemos delegar el proceso de autenticación</li>
@@ -241,6 +210,20 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
               <li class="fragment roll-in">En el banco, en teoría, deberían ser las únicas pantallas en las que un usuario mete su usuario, contraseña, doble factor,... (GIAM no cumple la norma)</li>
               <li class="fragment roll-in">Que nauthilus sepa quien eres no sirve de nada, tiene que transferir esa identidad a las apps del banco</li>
               <li class="fragment roll-in">Implementa dos protocolos para transferir la identidad: OpenId Connect y SAML</li>
+            </ul>
+          </section>
+          <section>
+            <h2>NAUTHILUS</h2>
+            <ul>
+              <li class="fragment roll-in">Autoriza, junto con lux, el acceso a una aplicación (o Service Provider en terminología SAML)</li>
+              <li class="fragment roll-in">Quien decide cuantas credenciales (2do factor y qué 2do factores son válidos) es LUX:
+                <ul>
+                  <li class="fragment roll-in">La regla de AuthZ incluye llamar a un PIP para obtener si la ip desde la que se accede es interna o externa</li>
+                  <li class="fragment roll-in">interna --> Acceder sin 2do factor | externa -> Pedir 2do factor</li>
+                  <li class="fragment roll-in">Otra regla: si el SP es APPSTREAM y accedes desde una red externa te pido 2do factor y entre los 2dos factores si el usuario pertenece a arquitectura te ofrezco el doble factor de google</li>
+                </ul>
+              </li>
+              <li class="fragment roll-in">Nautilus sólo (y nada menos) se encarga de interpretar la respuesta y encargarse de cumplirla</li>
             </ul>
           </section>
           <section>
@@ -267,16 +250,17 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
               <li class="fragment roll-in">Protocolo para hacer afirmaciones de seguridad -> La persona autenticada tiene esta identidad</li>
               <li class="fragment roll-in">Dos actores:
                 <ul>
+                  <li class="fragment roll-in">Principal: Entidad que estás identificando (empleados del banco)</li>
                   <li class="fragment roll-in">SP (Service Provider) quién posee el recurso.</li>
                   <li class="fragment roll-in">IdP (Identity Provider) Servidor de autorización.</li>
                 </ul>
               </li>
-              <li class="fragment roll-in">Paso previo a pedir identidad --> REGISTRARSE
+              <li class="fragment roll-in">Paso previo a pedir identidad
                 <ul>
-                  <li class="fragment roll-in">Establecer realición entre SP y IDP ->  Intercambio de metadatas</li>
-                  <li class="fragment roll-in">Metadata IDP: Su claves publica, urls en las que acepta peticiones, en las que va a responder</li>
+                  <li class="fragment roll-in">Establecer relación entre SP y IDP:  Intercambio de metadatas</li>
+                  <li class="fragment roll-in">Metadata IDP: Su claves publica, urls en las que acepta peticiones, en las que va a responder,...</li>
                   <li class="fragment roll-in">Metadata SP: Su claves publica, urls desde las que va a hacer peticiones, en las que va a aceptar las respuestas y tipo de msgs que quieren intercambiar (POST, GET, endpoints,...)</li>
-                  <li class="fragment roll-in">Armadillo crea y registra esos metadatas</li>
+                  <li class="fragment roll-in">Armadillo crea y registra los metadatas SP</li>
                 </ul>
               </li>
             </ul>
@@ -284,9 +268,9 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
           <section>
             <h2>SAML</h2>
             <ul>
-              <li class="fragment roll-in">Para autenticar a una persona es SAML sólo hacen falta dos mensajes:
+              <li class="fragment roll-in">Para autenticar a una persona en SAML sólo hacen falta dos mensajes:
                 <ol>
-                  <li class="fragment roll-in">SP  --- SAMLRequest ---> IDP: Autentica a persona "x" para SP "y".
+                  <li class="fragment roll-in">SP  --- SAMLRequest ---> IDP: Pido que autentiques a persona "x" para SP "y".
                     <ul>
                       <li class="fragment roll-in">Cuando tengas respuesta me la mandas a la URL "z". Soy el SP "atenea" </li>
                       <li class="fragment roll-in">Lleva más cosas: fecha, firma,... pero básicamente es eso la petición</li>
@@ -333,7 +317,7 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
               <li class="fragment roll-in">Tenemos una AppWeb (ej Atenea). Queremos que use autenticación de empleados y autorización de empleados que nos pide la gente de identidad (al menos pertenezca al grupo por defecto)</li>
               <li class="fragment roll-in">Podemos hacer 2 cosas:
                 <ul>
-                  <li class="fragment roll-in">Currarnos nosotros la integración con el PdP (XACML) y la integración con el IdP (SAML)</li>
+                  <li class="fragment roll-in">Currarnos nosotros la integración con el PDP (XACML) y la integración con el IdP (SAML)</li>
                   <li class="fragment roll-in">Esperar que exista alguna pieza que nos de esa integración: ARMADILLO</li>
                 </ul>
               </li>
@@ -344,10 +328,10 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
             <ul>
               <li class="fragment roll-in">Su uso más básico es un Proxy Inverso</li>
               <li class="fragment roll-in">Podemos verlo como un Nginx. <span class="fragment roll-in">Tan es así que una de las partes que tiene es un Nginx</span></li>
-              <li class="fragment roll-in">Ofrece además la capacidad de integrarse con el proveedor de identidad (SAML AuthN) y proveedor de autorizacion (LUX XACML)</li>
+              <li class="fragment roll-in">Ofrece además la capacidad de integrarse con el proveedor de identidad (Nauthilus SAML) y proveedor de autorizacion (Lux XACML)</li>
               <li class="fragment roll-in">Es prácticamente lo mismo que hacemos con el microApiGW y los servicios de ECS</li>
               <li class="fragment roll-in">Al igual que Kernel propaga la identidad en una cabecera, Armadillo hace lo mismo</li>
-              <li class="fragment roll-in"><span class="parpadea text">IMPORTANTE</span>: Para que la integración sea correcta debería existe MTLS entre armadillo y el backend</li>
+              <li class="fragment roll-in"><span class="parpadea text">IMPORTANTE</span>: Para que la integración sea correcta debería existir MTLS entre armadillo y el backend</li>
             </ul>
           </section>
           <section>
@@ -365,14 +349,14 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
           <section>
             <h2>ARMADILLO</h2>
             <ul>
-              <li class="fragment roll-in">No expone por defecto en ninguna red en la que no estuvieis ya</li>
+              <li class="fragment roll-in">No expone por defecto en ninguna red en la que no estuvieseis ya</li>
               <li class="fragment roll-in">Da autenticación y autorización, NO publicación</li>
-              <li class="fragment roll-in">---> de RED de usuarios al servidor publicar en DMZ</li>
+              <li class="fragment roll-in">de RED de usuarios al servidor: publicar en DMZ</li>
               <li class="fragment roll-in">Además:
                 <ul>
                   <li class="fragment roll-in">Implementa autenticación por OAuth</li>
-                  <li class="fragment roll-in">Puede hacer peticiones firmadas</li>
-                  <li class="fragment roll-in">Puede validar la firma de las peticiones</li>
+                  <li class="fragment roll-in">En peticiones firmadas: Puede realizar la validación</li>
+                  <li class="fragment roll-in">En respuestas: Puede firma la respuesta peticiones</li>
                   <li class="fragment roll-in">...</li>
                 </ul>
               </li>
