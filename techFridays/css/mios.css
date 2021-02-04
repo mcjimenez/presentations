@@ -74,6 +74,10 @@ div.left {
   text-align: left;
 }
 
+.reveal section img.small {
+  width: 50%;
+}
+
 .text,
 .reveal section span.text,
 span.text {
