@@ -62,29 +62,13 @@
             <h1>En una frase:</h1>
             <ul>
               <li class="fragment roll-in">
-                LUX: Es el servidor de autorización (AuthZ) siguiendo la arquitectura XACML</small>
+                LUX: Servidor de autorización (AuthZ) que sigue XACML</small>
               </li>
               <li class="fragment roll-in">
-                Nauthilus: Es un proveedor de identidad (IdP). Ofrece los estandares SAML y OpenId Connect para delegar autenticación (AuthN)</small>
+                Nauthilus: Proveedor de identidad (IdP) que puede delegar autenticación (AuthN) con SAML y OpenId Connect</small>
               </li>
               <li class="fragment roll-in">
-                Armadillo: Proxy inverso con capacidades de delegar la autenticación en un proveedor SAML (Nauthilus) y delegar la autorización en el acceso a recursos en proveedor XACML (Lux)
-              </li>
-            </ul>
-          </section>
-          <section>
-            <h2>En dos frases (o algo más)</h2>
-            <ul>
-              <li class="fragment roll-in">
-                <u></b>Fireglass:</b></u> Aislamientos de web.
-Para entendernos es como un browser Headless (sin interfaz de usuario) que accede a las páginas que tiene configuradas, las transformas según una serie de reglas y envía el HTML transformado al browser del cliente. Cuando interactuas con la página que se está viendo en el browser no interactuas con el servidor configurado sino con la representación (el html transformado) que ha proporcionado fireglass
-            </ul>
-          </section>
-          <section>
-            <h2>En dos frases (o algo más)</h2>
-            <ul>
-              <li class="fragment roll-in">
-                <u><B>TSec2JWT:</B></u> Es una pieza que se usa desde los frontales de negocio para poder mandar logs a Omega. En un frontal de negocio lo que tienes es un token de identidad de negocio (TSec) asociado al cliente o entidad que está operando. Kernel necesita un token técnico (JWT) con una identidad Técnica. Esta pieza intercambia un TSec por un JWT.
+                Armadillo: Proxy inverso que puede delegar autenticación en Nauthilus y la autorización para el acceso a recursos en Lux
               </li>
             </ul>
           </section>
@@ -92,7 +76,33 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
             <h2>En dos frases (o algo más)</h2>
             <ul>
               <li class="fragment roll-in">
-                <u><B>GIAM:</U></B> Global Identity Access Management. Es la pieza que se está definiendo en holding para hospedar todos los atributos de la identidad de un empleado del banco. Aquí van cosas desde como te llamas, donde te sientas, cual es tu cargo como a que sistemas tienes accesos y a que roles de esos sistemas perteneces. La relación con kernel es que para los empleados del Banco la idea es no dar permisos personales si no dar permisos a estos roles. La lista de roles que tiene un empleado van incluidos en el token que genera Portunus
+                <u></b>Fireglass:</b></u> 
+                Aislamientos de web.
+                Accede a las páginas configuradas, las transforma con reglas y envía el resultado al cliente. 
+                Cuando interactuas con la página en el browser lo haces con la representación que ha proporcionado fireglass
+            </ul>
+          </section>
+          <section>
+            <h2>En dos frases (o algo más)</h2>
+            <ul>
+              <li class="fragment roll-in">
+                <u><B>TSec2JWT:</B></u> 
+                Se usa desde los frontales de negocio para poder mandar logs a Omega. 
+                En el frontal de negocio hay un token de identidad de negocio (TSec) asociado al cliente o entidad que opera. 
+                Esta pieza intercambia un TSec por un un token técnico (JWT) que necesita Kernel. 
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>En dos frases (o algo más)</h2>
+            <ul>
+              <li class="fragment roll-in">
+                <u><B>GIAM:</U></B> 
+                Global Identity Access Management. 
+                Es la pieza que se está definiendo en holding para hospedar todos los atributos de la identidad de un empleado del banco. 
+                Aquí van los atributos de la persona, sistemas a los que accede y roles en los sistemas.
+                La idea es dar permisos a estos roles. 
+                La lista de roles de un empleado van en el token de Portunus.
               </li>
             </ul>
           </section>
@@ -100,7 +110,9 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
         <section>
           <section>
             <h2>Por qué XACML</h2>
-            <p class="fragment roll-in justify">Queremos controlar el acceso a un recurso: </br>recurso = cualquier cosa digital </br>Podemos hacerlo AdHoc o utilizar un sistema centralizado de control de autorizaciones
+            <p class="fragment roll-in justify">Queremos controlar el acceso a un recurso: </br>
+            recurso = cualquier elemento digital </br>
+            Podemos hacerlo AdHoc o con un sistema centralizado de autorizaciones
             </p>
           </section>
           <section>
@@ -109,9 +121,9 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
             <div class="box01">
               <div class="box02">
                 <ol>
-                  <li class="fragment roll-in"> Definirlas políticas: En lenguaje formal en que expresar las reglas (o condiciones) de acceso
+                  <li class="fragment roll-in"> Definir las políticas: lenguaje formal para expresar las reglas de acceso
                   </li>
-                  <li class="fragment roll-in"> Repositorio donde almacenar las reglas de AuthZ</li>
+                  <li class="fragment roll-in"> Repositorio para las reglas de AuthZ</li>
                 </ol>
               </div>
               <div class="box04"></div>
@@ -127,7 +139,7 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
               <ul>
                 <li class="fragment roll-in">Lenguaje XACML: eXtensible Access Control Markup Language</li>
                 <li class="fragment roll-in">Basado en XML en base a reglas. </li>
-                <li class="fragment roll-in">Va haciendo matches: A encaja con B entonces Permite acceso o deniega acceso, pon estas condiciones</li>
+                <li class="fragment roll-in">Si A encaja con B entonces permite o deniega acceso</li>
               </ul>
             </div>
           </section>
@@ -136,26 +148,8 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
             <div class="box01">
               <div class="box02">
                 <ul>
-                  <li class="fragment roll-in">En las políticas se pueden definir reglas que dependen de fuentes de datos externas</li>
-                  <li class="fragment roll-in">Ej. en "Sólo las personas que pertenecen al departamento de nóminas" Pertenecer al dpto Nominas puede ser consulta a una bbdd externa</li>
-
-                </ul>
-              </div>
-              <div class="box04"></div>
-              <div class="fragment roll-in box03 left">
-               --> PIP
-               </BR>A las fuentes de datos externas se accede mediante PIP's
-              </div>
-            </div>
-          </section>
-          <section>
-            <img src="imgs/xacmlArchitecture.png" class="">
-            <div class="box01">
-              <div class="box02">
-                <ul>
-                  <li class="fragment roll-in">En las políticas se pueden definir reglas que dependen de fuentes de datos externas</li>
-                  <li class="fragment roll-in">Ej. en "Sólo las personas que pertenecen al departamento de nóminas" Pertenecer al dpto Nominas puede ser consulta a una bbdd externa</li>
-
+                  <li class="fragment roll-in">En las políticas se pueden definir reglas que dependen de fuentes externas</li>
+                  <li class="fragment roll-in">Ej. en "Sólo las personas que pertenecen al departamento de nóminas", <em>Pertenecer al dpto Nominas</em> puede ser consulta a una BBDD externa</li>
                 </ul>
               </div>
               <div class="box04"></div>
@@ -170,9 +164,8 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
             <div class="box01">
               <div class="box05">
                 <ul>
-                  <li class="fragment roll-in">Necesitamos un elemento que haga el enforcement</li>
-                  <li class="fragment roll-in">Es decir, componente que hace cumplir las reglas del PDP</li>
-                  <li class="fragment roll-in">Hemos visto que el PDP es sólo informativo</li>
+                  <li class="fragment roll-in">Necesitamos un elemento que haga el cumplir las reglas del PDP</li>
+                  <li class="fragment roll-in">PDP es sólo informativo</li>
                 </ul>
               </div>
               <div class="box04"></div>
@@ -201,14 +194,15 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
                 <li class="fragment roll-in">ARMADILLO
                   <small>
                   <ul>
-                    <li class="fragment roll-in">Para Armadillo un recurso es una ruta dentro de un servidor. ¿puede e054373 acceder a /admin en este servidor?</li>
+                    <li class="fragment roll-in">Para Armadillo, recurso = ruta en un servidor. ¿puede e054373 acceder a /admin en este servidor?</li>
                   </ul>
                   </small>
                 </li>
                 <li class="fragment roll-in">Importante --> Restricción de GIAM
                   <small>
                   <ul>
-                    <li class="fragment roll-in">Obliga a que todas las aplicaciones tengan al menos un grupo por defecto (puede estar todo el banco) y se compruebe que los usuarios pertenecen a ese grupo</li>
+                    <li class="fragment roll-in">Obliga a las aplicaciones a tener grupo por defecto (puede estar todo el banco) 
+                    y a que los usuarios pertenezcan a dicho grupo</li>
                   </ul>
                   </small>
                 </li>
@@ -220,27 +214,27 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
           <section>
             <h2>NAUTHILUS</h2>
             <ul>
-              <li class="fragment roll-in">Se encarga de cumplir, junto con LUX, si puedes o no acceder y en qué condiciones</li>
-              <li class="fragment roll-in">Quien decide si tiene que pedirte un 2do factor y qué 2do factor es LUX:
+              <li class="fragment roll-in">Comprueba con LUX si tienes acceso y en qué condiciones</li>
+              <li class="fragment roll-in">Decide si 2do factor y qué 2do factor es LUX:
                 <ul>
-                  <li class="fragment roll-in">La regla de AuthZ incluye llamar a un PIP para obtener si la ip desde la que se accede es interna o externa</li>
-                  <li class="fragment roll-in">interna --> Acceder sin 2do factor | externa -> Pedir 2do factor</li>
-                  <li class="fragment roll-in">Otra regla: si el SP es upstream y accedes desde una red externa te pido 2do factor y entre los 2dos factores si el usuario pertenece a arquitectura te ofrezco el doble factor de google</li>
+                  <li class="fragment roll-in">La regla de AuthZ obtiene si la ip es interna o externa</li>
+                  <li class="fragment roll-in">interna --> Sin 2do factor | externa -> Pedir 2do factor</li>
+                  <li class="fragment roll-in">Otra regla: si el SP es upstream y accedes desde fuera te pido 2do factor y entre los 2dos factores si el usuario pertenece a arquitectura te ofrezco el doble factor de Google</li>
                 </ul>
               </li>
-              <li class="fragment roll-in">Nautilus sólo (y nada menos) se encarga de interpretar la respuesta y encargarse de cumplirla</li>
+              <li class="fragment roll-in">Nautilus sólo (y nada menos) interpreta la respuesta y la cumple</li>
             </ul>
           </section>
           <section>
             <h2>NAUTHILUS</h2>
             <ul>
               <li class="fragment roll-in">Es un IDP</li>
-              <li class="fragment roll-in">Un IDP es el responsable de proveer la identidad de un usuario</li>
-              <li class="fragment roll-in">Por tanto es la pieza en la que podemos delegar el proceso de autenticación</li>
-              <li class="fragment roll-in">Responsable de ofrecer todo el interfaz de usuario para que el usuario se autentique</li>
-              <li class="fragment roll-in">En el banco, en teoría, deberían ser las únicas pantallas en las que un usuario mete su usuario, contraseña, doble factor,... (GIAM no cumple la norma)</li>
-              <li class="fragment roll-in">Que nauthilus sepa quien eres no sirve de nada, tiene que transferir esa identidad a las apps del banco</li>
-              <li class="fragment roll-in">Implementa dos protocolos para transferir la identidad: OpenId Connect y SAML</li>
+              <li class="fragment roll-in">Un IDP provee la identidad de un usuario.</li>
+              <li class="fragment roll-in">En la que podemos delegar el proceso de autenticación.</li>
+              <li class="fragment roll-in">Responsable de la interfaz para la autenticación del usuario.</li>
+              <li class="fragment roll-in">En el banco, en teoría, deberían ser las únicas pantallas en las que un usuario mete su usuario, contraseña, doble factor,... (GIAM no cumple la norma).</li>
+              <li class="fragment roll-in">Nauthilus tiene que transferir esa identidad a las apps del banco.</li>
+              <li class="fragment roll-in">Implementa OpenId Connect y SAML para transferir la identidad.</li>
             </ul>
           </section>
           <section>
@@ -248,12 +242,12 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
             <ul>
               <li class="fragment roll-in">OpenIdConnect
                 <ul>
-                <li class="fragment roll-in">Se implementó para integrarse con piezas externas de la arquitectura de seguridad que no soportaban SAML</li>
+                <li class="fragment roll-in">Para integración con la arquitectura de seguridad que no soportaban SAML</li>
                 </ul>
               </li>
               <li class="fragment roll-in">SAML</li>
                 <ul>
-                  <li class="fragment roll-in">Es el protocolo utilizado por el resto de piezas de seguridad del banco y el que se habla con google</li>
+                  <li class="fragment roll-in">Utilizado por el resto de piezas de seguridad del banco y el que se habla con Google</li>
                 </ul>
               </li>
             </ul>
@@ -274,8 +268,8 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
               <li class="fragment roll-in">Paso previo a pedir identidad --> REGISTRARSE
                 <ul>
                   <li class="fragment roll-in">Establecer realición entre SP y IDP ->  Intercambio de metadatas</li>
-                  <li class="fragment roll-in">Metadata IDP: Su claves publica, urls en las que acepta peticiones, en las que va a responder</li>
-                  <li class="fragment roll-in">Metadata SP: Su claves publica, urls desde las que va a hacer peticiones, en las que va a aceptar las respuestas y tipo de msgs que quieren intercambiar (POST, GET, endpoints,...)</li>
+                  <li class="fragment roll-in">Metadata IDP: Su clave publica, urls en las que acepta peticiones, en las que va a responder</li>
+                  <li class="fragment roll-in">Metadata SP: Su clave publica, urls desde las que va a hacer peticiones, en las que va a aceptar las respuestas y tipo de msgs a intercambiar (POST, GET, endpoints,...)</li>
                   <li class="fragment roll-in">Armadillo crea y registra esos metadatas</li>
                 </ul>
               </li>
@@ -289,7 +283,7 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
                   <li class="fragment roll-in">SP  --- SAMLRequest ---> IDP: Autentica a persona "x" para SP "y".
                     <ul>
                       <li class="fragment roll-in">Cuando tengas respuesta me la mandas a la URL "z". Soy el SP "atenea" </li>
-                      <li class="fragment roll-in">Lleva más cosas: fecha, firma,... pero básicamente es eso la petición</li>
+                      <li class="fragment roll-in">Es la petición, aunque lleva más cosas: fecha, firma,... </li>
                     </ul>
                   </li>
                   <li class="fragment roll-in">SP <--- SAMLResponse --- IDP: En la URL pasada en la request responde  "La identidad de 'x' es 'abcd'"
