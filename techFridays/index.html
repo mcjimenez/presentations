@@ -62,29 +62,13 @@
             <h1>En una frase:</h1>
             <ul>
               <li class="fragment roll-in">
-                LUX: Es el servidor de autorización (AuthZ) siguiendo la arquitectura XACML</small>
+                LUX: Autorización (AuthZ). Arquitectura XACML</small>
               </li>
               <li class="fragment roll-in">
-                Nauthilus: Es un proveedor de identidad (IdP). Ofrece los estandares SAML y OpenId Connect para delegar autenticación (AuthN)</small>
+                NAUTHILUS: Autenticación (AuthN). Es un IdP. SAML y OpenId</small>
               </li>
               <li class="fragment roll-in">
-                Armadillo: Proxy inverso con capacidades de delegar la autenticación en un proveedor SAML (Nauthilus) y delegar la autorización en el acceso a recursos en proveedor XACML (Lux)
-              </li>
-            </ul>
-          </section>
-          <section>
-            <h2>En dos frases (o algo más)</h2>
-            <ul>
-              <li class="fragment roll-in">
-                <u></b>Fireglass:</b></u> Aislamientos de web.
-Para entendernos es como un browser Headless (sin interfaz de usuario) que accede a las páginas que tiene configuradas, las transformas según una serie de reglas y envía el HTML transformado al browser del cliente. Cuando interactuas con la página que se está viendo en el browser no interactuas con el servidor configurado sino con la representación (el html transformado) que ha proporcionado fireglass
-            </ul>
-          </section>
-          <section>
-            <h2>En dos frases (o algo más)</h2>
-            <ul>
-              <li class="fragment roll-in">
-                <u><B>TSec2JWT:</B></u> Es una pieza que se usa desde los frontales de negocio para poder mandar logs a Omega. En un frontal de negocio lo que tienes es un token de identidad de negocio (TSec) asociado al cliente o entidad que está operando. Kernel necesita un token técnico (JWT) con una identidad Técnica. Esta pieza intercambia un TSec por un JWT.
+                ARMADILLO: Proxy inverso + delegar AuthN en proveedor SAML (Nauthilus) + delegar AuthZ en proveedor XACML (Lux)
               </li>
             </ul>
           </section>
@@ -92,7 +76,39 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
             <h2>En dos frases (o algo más)</h2>
             <ul>
               <li class="fragment roll-in">
-                <u><B>GIAM:</U></B> Global Identity Access Management. Es la pieza que se está definiendo en holding para hospedar todos los atributos de la identidad de un empleado del banco. Aquí van cosas desde como te llamas, donde te sientas, cual es tu cargo como a que sistemas tienes accesos y a que roles de esos sistemas perteneces. La relación con kernel es que para los empleados del Banco la idea es no dar permisos personales si no dar permisos a estos roles. La lista de roles que tiene un empleado van incluidos en el token que genera Portunus
+                <u></b>Fireglass:</b></u>
+<span class="fragment roll-in">
+</BR>Aislamientos de web.
+</br>Como browser Headless: Accede a las páginas, las transformas según reglas y envía el HTML transformado.
+</br></br>Interactuas con la representación (HTML transformado) que ha proporcionado fireglass
+</span>
+            </ul>
+          </section>
+          <section>
+            <h2>En dos frases (o algo más)</h2>
+            <ul>
+              <li class="fragment roll-in">
+                <u><B>TSec2JWT:</B></u>
+<span class="fragment roll-in">
+</BR>Se usa desde los frontales de negocio para poder mandar logs a Omega.
+</BR>En un frontal de negocio tienes un token de identidad de negocio (TSec) asociado al cliente o entidad que está operando.
+</BR>Esta pieza intercambia un TSec por un token técnico (JWT) que necesita Kernel.
+</span>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>En dos frases (o algo más)</h2>
+            <ul>
+              <li class="fragment roll-in">
+                <u><B>GIAM:</U></B>
+<span class="fragment roll-in">
+</BR>Global Identity Access Management.
+</BR>Es la pieza que se está definiendo en holding para hospedar todos los atributos de la identidad de un empleado del banco:
+</BR>Datos del empleado, sistemas a los que tienes accesos y a que roles de esos sistemas perteneces.
+</BR>Relación con kernel: La idea es no dar permisos personales si no a estos roles.
+</BR>La lista de roles que tiene un empleado van incluidos en el token que genera Portunus
+</span>
               </li>
             </ul>
           </section>
@@ -100,7 +116,9 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
         <section>
           <section>
             <h2>Por qué XACML</h2>
-            <p class="fragment roll-in justify">Queremos controlar el acceso a un recurso: </br>recurso = cualquier cosa digital </br>Podemos hacerlo AdHoc o utilizar un sistema centralizado de control de autorizaciones
+            <p class="fragment roll-in justify">Queremos controlar el acceso a un recurso:</p>
+<p class="fragment roll-in justify">recurso = cualquier cosa digital</p>
+<p class="fragment roll-in justify">Podemos hacerlo AdHoc o utilizar un sistema centralizado de control de autorizaciones
             </p>
           </section>
           <section>
@@ -223,7 +241,7 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
                   <li class="fragment roll-in">Otra regla: si el SP es APPSTREAM y accedes desde una red externa te pido 2do factor y entre los 2dos factores si el usuario pertenece a arquitectura te ofrezco el doble factor de google</li>
                 </ul>
               </li>
-              <li class="fragment roll-in">Nautilus sólo (y nada menos) se encarga de interpretar la respuesta y encargarse de cumplirla</li>
+              <li class="fragment roll-in">Nautilus sólo (y nada menos) interpreta la respuesta y la cumple</li>
             </ul>
           </section>
           <section>
@@ -231,7 +249,7 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
             <ul>
               <li class="fragment roll-in">OpenIdConnect
                 <ul>
-                <li class="fragment roll-in">Se implementó para integrarse con piezas externas de la arquitectura de seguridad que no soportaban SAML</li>
+                <li class="fragment roll-in">Para integrarse con piezas externas de la arquitectura de seguridad que no soportaban SAML</li>
                 </ul>
               </li>
               <li class="fragment roll-in">SAML</li>
@@ -248,12 +266,14 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
             <ul>
               <li class="fragment roll-in"><u>S</u>ecurity <u>A</u>ssertion <u>M</u>arkup <u>L</u>anguage. Basado en XML</li>
               <li class="fragment roll-in">Protocolo para hacer afirmaciones de seguridad -> La persona autenticada tiene esta identidad</li>
-              <li class="fragment roll-in">Dos actores:
+              <li class="fragment roll-in">Tres actores:
+<small>
                 <ul>
                   <li class="fragment roll-in">Principal: Entidad que estás identificando (empleados del banco)</li>
                   <li class="fragment roll-in">SP (Service Provider) quién posee el recurso.</li>
                   <li class="fragment roll-in">IdP (Identity Provider) Servidor de autorización.</li>
                 </ul>
+</small>
               </li>
               <li class="fragment roll-in">Paso previo a pedir identidad
                 <ul>
@@ -328,7 +348,7 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
             <ul>
               <li class="fragment roll-in">Su uso más básico es un Proxy Inverso</li>
               <li class="fragment roll-in">Podemos verlo como un Nginx. <span class="fragment roll-in">Tan es así que una de las partes que tiene es un Nginx</span></li>
-              <li class="fragment roll-in">Ofrece además la capacidad de integrarse con el proveedor de identidad (Nauthilus SAML) y proveedor de autorizacion (Lux XACML)</li>
+              <li class="fragment roll-in">Ofrece además la capacidad de integrarse con el IdP (Nauthilus SAML) y el PDP (Lux XACML)</li>
               <li class="fragment roll-in">Es prácticamente lo mismo que hacemos con el microApiGW y los servicios de ECS</li>
               <li class="fragment roll-in">Al igual que Kernel propaga la identidad en una cabecera, Armadillo hace lo mismo</li>
               <li class="fragment roll-in"><span class="parpadea text">IMPORTANTE</span>: Para que la integración sea correcta debería existir MTLS entre armadillo y el backend</li>
@@ -375,7 +395,7 @@ Para entendernos es como un browser Headless (sin interfaz de usuario) que acced
               </li>
               <li class="fragment roll-in">Publicar en fireglass
                 <ul>
-                  <li class="fragment roll-in">Lo que se expone en DMZ como atenea.nextgen.igrupo NO es arpmadillo</li>
+                  <li class="fragment roll-in">Lo que se expone en DMZ como atenea.nextgen.igrupo NO es armadillo</li>
                   <li class="fragment roll-in">Es fireglass</li>
                 </ul>
               </li>
