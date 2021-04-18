@@ -1,0 +1,119 @@
+.reveal section img.porque {
+   position: absolute;
+   left: 225px;
+   background: rgba(255, 255, 255, 0);
+}
+
+div.rectangle {
+    border:7px solid #FFF;
+    position: absolute;
+    display: inline-block;
+    text-align: center;
+}
+div.rectangle * {
+    padding: 5px 10px;
+}
+
+div.rectIdea {
+ # left: 100px;
+  top: 100px;
+}
+div.rectCod1 {
+  left: 200px;
+  top: 200px;
+}
+div.rectDoc1 {
+  left: 200px;
+  top: 300px;
+}
+
+div.box01{
+  /*border: 5px solid;*/
+  /*background: white;*/
+  /*color: black;*/
+  display: flex;
+}
+
+div.box02{
+  width: 68%;
+  height: 50px;
+  /*background: blue;*/
+}
+
+div.box04{
+  width: 5%;
+}
+
+div.box03{
+  width: 27%;
+  /*height: 180px;*/
+  /*background: green;*/
+}
+
+div.box05 {
+  width: 50%;
+  /*background: blue;*/
+}
+
+div.box06 {
+  width: 45%;
+  /*height: 180px;*/
+  /*background: green;*/
+}
+
+p.justify{
+  text-align: justify;
+}
+
+div.left {
+  text-align: left;
+}
+
+.reveal p.left,
+.reveal h3.left {
+  text-align: left;
+}
+
+.reveal section img.small {
+  width: 40%;
+}
+
+.text,
+.reveal section span.text,
+span.text {
+  font-size:100%;
+  font-family:helvetica;
+  font-weight:bold;
+  /*color:#71d90b;*/
+  text-transform:uppercase;
+}
+
+.parpadea {
+  animation-name: parpadeo;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  -webkit-animation-name:parpadeo;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@-moz-keyframes parpadeo {
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes parpadeo {
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+   100% { opacity: 1.0; }
+}
+
+@keyframes parpadeo {
+  0% { opacity: 1.0; }
+   50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}

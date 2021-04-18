@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Tech Friday: Armadillo, Lux, Nauthilus, Fireglass, TSec2JWT,...</title>
+
+    <meta name="description" content="Why do I keep getting into these problems?">
+    <meta name="author" content="Carmen J. Cabezas">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/mios.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+    <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>Tech Fridays</h1>
+          <h2>Qué vamos a ver:</h2>
+          <ul>
+            <li class="fragment roll-in">
+              New core security stack: Trinidad Armadillo + Nauthilus + Lux
+            </li>
+            <li class="fragment roll-in">
+              Aislamiento de web: Fireglass
+            <li class="fragment roll-in">
+              Logs desde frontales de negocio hasta Omega
+            </li>
+            <li class="fragment roll-in">
+              Global Identity Access Management: GIAM para los amigos
+            </li>
+          </ul>
+          </br></br>
+          <p>
+            <small>Carmen J. Cabezas (carmen.jimenez.cabezas@bbva.com)</small>
+          </p>
+        </section>
+        <section>
+          <section>
+            <h1>En una frase:</h1>
+            <ul>
+              <li class="fragment roll-in">
+                LUX: Autorización (AuthZ). Arquitectura XACML</small>
+              </li>
+              <li class="fragment roll-in">
+                NAUTHILUS: Autenticación (AuthN). Es un IdP. SAML y OpenId</small>
+              </li>
+              <li class="fragment roll-in">
+                ARMADILLO: Proxy inverso + delegar AuthN en proveedor SAML (Nauthilus) + delegar AuthZ en proveedor XACML (Lux)
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>En dos frases (o algo más)</h2>
+            <ul>
+              <li class="fragment roll-in">
+                <u></b>Fireglass:</b></u>
+<span class="fragment roll-in">
+</BR>Aislamientos de web.
+</br>Como browser Headless: Accede a las páginas, las transformas según reglas y envía el HTML transformado.
+</br></br>Interactuas con la representación (HTML transformado) que ha proporcionado fireglass
+</span>
+            </ul>
+          </section>
+          <section>
+            <h2>En dos frases (o algo más)</h2>
+            <ul>
+              <li class="fragment roll-in">
+                <u><B>TSec2JWT:</B></u>
+<span class="fragment roll-in">
+</BR>Se usa desde los frontales de negocio para poder mandar logs a Omega.
+</BR>En un frontal de negocio tienes un token de identidad de negocio (TSec) asociado al cliente o entidad que está operando.
+</BR>Esta pieza intercambia un TSec por un token técnico (JWT) que necesita Kernel.
+</span>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>En dos frases (o algo más)</h2>
+            <ul>
+              <li class="fragment roll-in">
+                <u><B>GIAM:</U></B>
+<span class="fragment roll-in">
+</BR>Global Identity Access Management.
+</BR>Es la pieza que se está definiendo en holding para hospedar todos los atributos de la identidad de un empleado del banco:
+</BR>Datos del empleado, sistemas a los que tienes accesos y a que roles de esos sistemas perteneces.
+</BR>Relación con kernel: La idea es no dar permisos personales si no a estos roles.
+</BR>La lista de roles que tiene un empleado van incluidos en el token que genera Portunus
+</span>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Por qué XACML</h2>
+            <p class="fragment roll-in justify">Queremos controlar el acceso a un recurso:</p>
+<p class="fragment roll-in justify">recurso = cualquier cosa digital</p>
+<p class="fragment roll-in justify">Podemos hacerlo AdHoc o utilizar un sistema centralizado de control de autorizaciones
+            </p>
+          </section>
+          <section>
+            <h2>Qué es XACML</h2>
+            <img src="imgs/xacmlArchitecture.png" class="">
+            <div class="box01">
+              <div class="box02">
+                <ol>
+                  <li class="fragment roll-in"> Definir las políticas: En lenguaje formal en que expresar las reglas (o condiciones) de acceso
+                  </li>
+                  <li class="fragment roll-in"> Repositorio donde almacenar las reglas de AuthZ</li>
+                </ol>
+              </div>
+              <div class="box04"></div>
+              <div class="fragment roll-in box03 left">
+               --> Es la función del PAP.
+               </br>El lenguaje se llama también XACML
+              </div>
+            </div>
+          </section>
+          <section>
+            <img src="imgs/xacmlArchitecture.png" class="">
+            <div>
+              <ul>
+                <li class="fragment roll-in">Lenguaje XACML: eXtensible Access Control Markup Language</li>
+                <li class="fragment roll-in">Basado en XML en base a reglas. </li>
+                <li class="fragment roll-in">Va haciendo matches: A encaja con B entonces Permite acceso o deniega acceso, pon estas condiciones</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <img src="imgs/xacmlArchitecture.png" class="">
+            <div class="box01">
+              <div class="box02">
+                <ul>
+                  <li class="fragment roll-in">En las políticas se pueden definir reglas que dependen de fuentes de datos externas</li>
+                  <li class="fragment roll-in">Ej. en "Sólo las personas que pertenecen al departamento de nóminas" Pertenecer al dpto Nominas puede ser consulta a una bbdd externa</li>
+
+                </ul>
+              </div>
+              <div class="box04"></div>
+              <div class="fragment roll-in box03 left">
+               --> PIP
+               </BR>A las fuentes de datos externas se accede mediante PIP's
+              </div>
+            </div>
+          </section>
+          <section>
+            <img src="imgs/xacmlArchitecture.png" class="">
+            <div class="box01">
+              <div class="box05">
+                <ul>
+                  <li class="fragment roll-in">Necesitamos un elemento que haga el enforcement</li>
+                  <li class="fragment roll-in">Es decir, componente que hace cumplir las reglas del PDP</li>
+                  <li class="fragment roll-in">Hemos visto que el PDP es sólo informativo</li>
+                </ul>
+              </div>
+              <div class="box04"></div>
+              <div class="box06 left">
+                  <p class="fragment roll-in">--> Función del PEP</li>
+                  </br><span class="fragment roll-in">Nauthilus y Armadillo</span>
+                  </br><span class="fragment roll-in">Pero podría usarlo cualquier otro servicio y delegar AuthZ en este PDP.</span>
+                  </br><span class="fragment roll-in">Ej.: ASO para control de fraude</span>
+                  </p>
+              </div>
+            </div>
+          </section>
+          <section>
+            <img src="imgs/xacmlArchitecture.png" class="">
+            <div class="fragment roll-i">
+              <H3 class="left">PEP's:</H3>
+              <ul>
+                <li class="fragment roll-in">NAUTHILUS (idp)
+                  <small>
+                  <ul>
+                  <li class="fragment roll-in">Para Nauthilus un recurso es un ServiceProvider. Es decir un servidor</li>
+                  <li class="fragment roll-in">Le pregunta al PDP si una persona tiene acceso a un servidor "¿Puede e054373 acceder a atenea?"</li>
+                  </ul>
+                  </small>
+                </li>
+                <li class="fragment roll-in">ARMADILLO
+                  <small>
+                  <ul>
+                    <li class="fragment roll-in">Para Armadillo un recurso es una ruta dentro de un servidor. ¿puede e054373 acceder a /admin en este servidor?</li>
+                  </ul>
+                  </small>
+                </li>
+                <li class="fragment roll-in">Importante --> Restricción de GIAM
+                  <small>
+                  <ul>
+                    <li class="fragment roll-in">Obliga a que todas las aplicaciones tengan al menos un grupo por defecto (puede estar todo el banco) y se compruebe que los usuarios pertenecen a ese grupo</li>
+                  </ul>
+                  </small>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>NAUTHILUS</h2>
+            <ul>
+              <li class="fragment roll-in">Es un IDP</li>
+              <li class="fragment roll-in">Un IDP es el responsable de proveer la identidad de un usuario</li>
+              <li class="fragment roll-in">Por tanto es la pieza en la que podemos delegar el proceso de autenticación</li>
+              <li class="fragment roll-in">Responsable de ofrecer todo el interfaz de usuario para que el usuario se autentique</li>
+              <li class="fragment roll-in">En el banco, en teoría, deberían ser las únicas pantallas en las que un usuario mete su usuario, contraseña, doble factor,... (GIAM no cumple la norma)</li>
+              <li class="fragment roll-in">Que nauthilus sepa quien eres no sirve de nada, tiene que transferir esa identidad a las apps del banco</li>
+              <li class="fragment roll-in">Implementa dos protocolos para transferir la identidad: OpenId Connect y SAML</li>
+            </ul>
+          </section>
+          <section>
+            <h2>NAUTHILUS</h2>
+            <ul>
+              <li class="fragment roll-in">Autoriza, junto con lux, el acceso a una aplicación (o Service Provider en terminología SAML)</li>
+              <li class="fragment roll-in">Quien decide cuantas credenciales (2do factor y qué 2do factores son válidos) es LUX:
+                <ul>
+                  <li class="fragment roll-in">La regla de AuthZ incluye llamar a un PIP para obtener si la ip desde la que se accede es interna o externa</li>
+                  <li class="fragment roll-in">interna --> Acceder sin 2do factor | externa -> Pedir 2do factor</li>
+                  <li class="fragment roll-in">Otra regla: si el SP es APPSTREAM y accedes desde una red externa te pido 2do factor y entre los 2dos factores si el usuario pertenece a arquitectura te ofrezco el doble factor de google</li>
+                </ul>
+              </li>
+              <li class="fragment roll-in">Nautilus sólo (y nada menos) interpreta la respuesta y la cumple</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Protocolos para "compartir" la identidad</h2>
+            <ul>
+              <li class="fragment roll-in">OpenIdConnect
+                <ul>
+                <li class="fragment roll-in">Para integrarse con piezas externas de la arquitectura de seguridad que no soportaban SAML</li>
+                </ul>
+              </li>
+              <li class="fragment roll-in">SAML</li>
+                <ul>
+                  <li class="fragment roll-in">Es el protocolo utilizado por el resto de piezas de seguridad del banco y el que se habla con google</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>SAML 2.0 (AuthN, AuthZ)</h2>
+            <ul>
+              <li class="fragment roll-in"><u>S</u>ecurity <u>A</u>ssertion <u>M</u>arkup <u>L</u>anguage. Basado en XML</li>
+              <li class="fragment roll-in">Protocolo para hacer afirmaciones de seguridad -> La persona autenticada tiene esta identidad</li>
+              <li class="fragment roll-in">Tres actores:
+<small>
+                <ul>
+                  <li class="fragment roll-in">Principal: Entidad que estás identificando (empleados del banco)</li>
+                  <li class="fragment roll-in">SP (Service Provider) quién posee el recurso.</li>
+                  <li class="fragment roll-in">IdP (Identity Provider) Servidor de autorización.</li>
+                </ul>
+</small>
+              </li>
+              <li class="fragment roll-in">Paso previo a pedir identidad
+                <ul>
+                  <li class="fragment roll-in">Establecer relación entre SP y IDP:  Intercambio de metadatas</li>
+                  <li class="fragment roll-in">Metadata IDP: Su claves publica, urls en las que acepta peticiones, en las que va a responder,...</li>
+                  <li class="fragment roll-in">Metadata SP: Su claves publica, urls desde las que va a hacer peticiones, en las que va a aceptar las respuestas y tipo de msgs que quieren intercambiar (POST, GET, endpoints,...)</li>
+                  <li class="fragment roll-in">Armadillo crea y registra los metadatas SP</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>SAML</h2>
+            <ul>
+              <li class="fragment roll-in">Para autenticar a una persona en SAML sólo hacen falta dos mensajes:
+                <ol>
+                  <li class="fragment roll-in">SP  --- SAMLRequest ---> IDP: Pido que autentiques a persona "x" para SP "y".
+                    <ul>
+                      <li class="fragment roll-in">Cuando tengas respuesta me la mandas a la URL "z". Soy el SP "atenea" </li>
+                      <li class="fragment roll-in">Lleva más cosas: fecha, firma,... pero básicamente es eso la petición</li>
+                    </ul>
+                  </li>
+                  <li class="fragment roll-in">SP <--- SAMLResponse --- IDP: En la URL pasada en la request responde  "La identidad de 'x' es 'abcd'"
+                    <ul>
+                      <li class="fragment roll-in">Añade atributos configurados para pasar: </li>
+                      <li class="fragment roll-in">Ej: tienes estos grupos, estas restricciones,...</li>
+                    </ul>
+                  </li>
+                  <li class="fragment roll-in">Todo lo que hay en medio de petición y respuesta es implementación concreta del IDP, no es parte del protocolo</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>SAML - Cómo se mandan los mensajes</h2>
+            <ul>
+              <li class="fragment roll-in">SAML define varios perfiles: Estamos viendo Web Browser SSO Profile</li>
+              <li class="fragment roll-in">SAML define varios encapsulamientos (binding)
+                <ul>
+                  <li class="fragment roll-in">SP puede elegir entre 4 e IDP entre 3</li>
+                  <li class="fragment roll-in">Da lugar a 12 posibles escenarios</li>
+                </ul>
+              </li>
+              <li class="fragment roll-in">Los más comunes son <b>HTTP Redirect Binding</b> y <b>HTTP POST Binding</b></li>
+              <li class="fragment roll-in">Escenario 1: SP Redirect Request; IDP POST Response </li>
+                <ul>
+                  <li class="fragment roll-in">Google (correo, intranet,...) <---> Nauthilus</li>
+                </ul>
+              <li class="fragment roll-in">Escenario 2: SP POST Request; IDP POST Response</li>
+                <ul>
+                  <li class="fragment roll-in">Atenea (Armadillo) <---> Nauthilus</li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>ARMADILLO</h2>
+            <ul>
+              <li class="fragment roll-in">Tenemos una AppWeb (ej Atenea). Queremos que use autenticación de empleados y autorización de empleados que nos pide la gente de identidad (al menos pertenezca al grupo por defecto)</li>
+              <li class="fragment roll-in">Podemos hacer 2 cosas:
+                <ul>
+                  <li class="fragment roll-in">Currarnos nosotros la integración con el PDP (XACML) y la integración con el IdP (SAML)</li>
+                  <li class="fragment roll-in">Esperar que exista alguna pieza que nos de esa integración: ARMADILLO</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>ARMADILLO</h2>
+            <ul>
+              <li class="fragment roll-in">Su uso más básico es un Proxy Inverso</li>
+              <li class="fragment roll-in">Podemos verlo como un Nginx. <span class="fragment roll-in">Tan es así que una de las partes que tiene es un Nginx</span></li>
+              <li class="fragment roll-in">Ofrece además la capacidad de integrarse con el IdP (Nauthilus SAML) y el PDP (Lux XACML)</li>
+              <li class="fragment roll-in">Es prácticamente lo mismo que hacemos con el microApiGW y los servicios de ECS</li>
+              <li class="fragment roll-in">Al igual que Kernel propaga la identidad en una cabecera, Armadillo hace lo mismo</li>
+              <li class="fragment roll-in"><span class="parpadea text">IMPORTANTE</span>: Para que la integración sea correcta debería existir MTLS entre armadillo y el backend</li>
+            </ul>
+          </section>
+          <section>
+            <h2>ARMADILLO</h2>
+            <h3>IMPORTANTE</h3>
+            <ul>
+              <li class="fragment roll-in">No es un firewall, ni es un router, ni un gateway</li>
+              <li class="fragment roll-in">No está entre dos redes</li>
+              <li class="fragment roll-in">La red del banco es plana: Aquello a lo que se llega con Armadillo se llega sin armadillo</li>
+              <li class="fragment roll-in">Si estás en un punto de red que ves las IPs de Armadillo, estas en un punto de red que ves las IPs protegidas por armadillo</li>
+              <li class="fragment roll-in">Por tanto, para que la protección sea efectiva el backend tiene que tener relación de confianza con armadillo.</li>
+              <li class="fragment roll-in"><h2>sólo acepte peticiones de armadillo</h2></li>
+            </ul>
+          </section>
+          <section>
+            <h2>ARMADILLO</h2>
+            <ul>
+              <li class="fragment roll-in">No expone por defecto en ninguna red en la que no estuvieseis ya</li>
+              <li class="fragment roll-in">Da autenticación y autorización, NO publicación</li>
+              <li class="fragment roll-in">de RED de usuarios al servidor: publicar en DMZ</li>
+              <li class="fragment roll-in">Además:
+                <ul>
+                  <li class="fragment roll-in">Implementa autenticación por OAuth</li>
+                  <li class="fragment roll-in">En peticiones firmadas: Puede realizar la validación</li>
+                  <li class="fragment roll-in">En respuestas: Puede firmar la respuesta de peticiones</li>
+                  <li class="fragment roll-in">...</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Publicación en DMZ</h2>
+            <p class="fragment roll-in left">Se puede hacer de dos formas:</p>
+            <ul>
+              <li class="fragment roll-in">Publicar directamente el tenant de Armadillo en DMZ
+                <ul>
+                  <li class="fragment roll-in">El usuario conectandose a través de la DMZ está llegando a armadillo y a través de armadillo al backend</li>
+                </ul>
+              </li>
+              <li class="fragment roll-in">Publicar en fireglass
+                <ul>
+                  <li class="fragment roll-in">Lo que se expone en DMZ como atenea.nextgen.igrupo NO es armadillo</li>
+                  <li class="fragment roll-in">Es fireglass</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Fireglass</h2>
+            <img src="imgs/fireglass.png" class="small">
+            <ul>
+              <li class="fragment roll-in">Máquina que está en la red interna</li>
+              <li class="fragment roll-in">Cuando se hizo la publicación se manda el tráfico de la DMZ a la máquina de fireglass</li>
+              <li class="fragment roll-in">Configurado para:</li>
+                <ul>
+                  <li class="fragment roll-in">Cuando me llega URL atenea.nextgen.igrupo arranca browser headless</li>
+                  <li class="fragment roll-in">Carga atenea.ether.igrupo, la renderiza y la manda "masticada"</li>
+                </ul>
+            </ul>
+          </section>
+        </section>
+      </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+  </body>
+</html>
